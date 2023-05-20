@@ -17,8 +17,6 @@ export const Home = () => {
 
       // mb={36}
     >
-      <GridItem>1</GridItem>
-
       {notes?.map(({ id }) => (
         <GridItem key={id} bgColor='blue.200'>
           {id}
