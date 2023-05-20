@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Catetan",
+  "name": "Catetan - Application for keeping notes",
   "icons": [
     {
       "src": "favicon.ico",

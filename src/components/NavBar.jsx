@@ -8,11 +8,7 @@ export const NavBar = () => {
 
   return (
     <SimpleGrid
-      flex='none'
       boxShadow='xs'
-      // alignItems='center'
-      // floxGrow={1}
-      // w='full'
       columns={3}
       mb={[4, 8, 12]}
       bgColor='gray.100'
