@@ -1,23 +1,26 @@
-import React from 'react';
-import { useColorMode, useColorModeValue, IconButton } from '@chakra-ui/react';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import React from 'react'
+import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import {
+  WeatherMoon,
+  WeatherSunny
+} from '@emotion-icons/fluentui-system-regular'
 
-export const ColorModeSwitcher = props => {
-  const { toggleColorMode } = useColorMode();
-  const text = useColorModeValue('dark', 'light');
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
+export const ColorModeSwitcher = (props) => {
+  const { toggleColorMode } = useColorMode()
+  const text = useColorModeValue('dark', 'light')
+  const SwitchIcon = useColorModeValue(WeatherMoon, WeatherSunny)
 
   return (
     <IconButton
-      size="md"
-      fontSize="lg"
+      size='md'
+      fontSize='lg'
       aria-label={`Switch to ${text} mode`}
-      variant="ghost"
-      color="current"
-      marginLeft="2"
+      variant='ghost'
+      color='current'
+      marginLeft='2'
       onClick={toggleColorMode}
-      icon={<SwitchIcon />}
+      icon={<SwitchIcon width={16} height={16} />}
       {...props}
     />
-  );
-};
+  )
+}
