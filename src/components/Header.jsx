@@ -20,7 +20,6 @@ import {
 export const Header = () => {
   return (
     <SimpleGrid
-      // flex='none'
       columns={[1, 2]}
       gap={[4, 0]}
       mt={[4, 8, 12]}

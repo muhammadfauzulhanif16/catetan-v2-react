@@ -10,11 +10,16 @@ export const NavBar = () => {
     <SimpleGrid
       boxShadow='xs'
       columns={3}
-      mb={[4, 8, 12]}
+      m={[4, 8, 12]}
       bgColor='gray.100'
       p={2}
       gap={2}
       borderRadius={8}
+      pos='fixed'
+      bottom={0}
+      right={0}
+      left={0}
+      // w='full'
     >
       {navs.map(({ initIcon, finalIcon, text }, id) => (
         <Nav
