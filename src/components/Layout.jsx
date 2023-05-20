@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, GridItem } from '@chakra-ui/react'
-import { Header } from './Header'
 import { NavBar } from './NavBar'
+import { Header } from './Header'
 
 export const Layout = ({ children }) => {
   return (
@@ -14,9 +14,9 @@ export const Layout = ({ children }) => {
       h='100vh'
       w='100vw'
       pos='fixed'
-      gap={[4, 8, 12]}
+      // gap={[4, 8, 12]}
     >
-      <GridItem>
+      <GridItem h='full'>
         <Header />
       </GridItem>
 
@@ -24,7 +24,7 @@ export const Layout = ({ children }) => {
         {children}
       </GridItem>
 
-      <GridItem>
+      <GridItem h='full'>
         <NavBar />
       </GridItem>
     </Grid>
