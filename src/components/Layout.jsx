@@ -9,7 +9,6 @@ export const Layout = ({ children }) => {
     <Flex
       direction='column'
       // color='gray.600'
-      bgColor='blue.300'
       h='100vh'
       pos='fixed'
       w='full'
