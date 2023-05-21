@@ -15,6 +15,7 @@ export const Nav = ({
   return (
     <Button
       gap={[2, 4]}
+      w='full'
       alignItems='center'
       role='group'
       color={initColor}

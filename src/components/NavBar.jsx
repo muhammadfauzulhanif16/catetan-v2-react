@@ -1,7 +1,8 @@
 import React from 'react'
-import { SimpleGrid } from '@chakra-ui/react'
+import { Link, SimpleGrid } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import { navList } from '../data/navList'
+import { Link as RRLink } from 'react-router-dom'
 
 export const NavBar = () => {
   const navs = navList()
@@ -22,14 +23,19 @@ export const NavBar = () => {
       // w='full'
     >
       {navs.map(({ initIcon, finalIcon, text }, id) => (
-        <Nav
+        <Link
+          as={RRLink}
           key={id}
-          initIcon={initIcon}
-          finalIcon={finalIcon}
-          text={text}
-          initBgColor={text === 'Add' ? 'yellow.200' : 'gray.100'}
-          finalBgColor={text === 'Add' ? 'yellow.300' : 'gray.200'}
-        />
+          to={`/${text === 'All' ? '' : text.toLowerCase()}`}
+        >
+          <Nav
+            initIcon={initIcon}
+            finalIcon={finalIcon}
+            text={text}
+            initBgColor={text === 'Add' ? 'yellow.200' : 'gray.100'}
+            finalBgColor={text === 'Add' ? 'yellow.300' : 'gray.200'}
+          />
+        </Link>
       ))}
     </SimpleGrid>
   )
