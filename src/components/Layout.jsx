@@ -8,16 +8,14 @@ export const Layout = ({ children }) => {
   return (
     <Flex
       direction='column'
-      color='gray.600'
-      bgColor='gray.50'
+      // color='gray.600'
+
       px={[4, 8, 12]}
       mb={[24, 32, 40]}
     >
       <Header />
 
-      <Box bgColor='green.200' h='full'>
-        {children}
-      </Box>
+      <Box h='full'>{children}</Box>
 
       <NavBar />
     </Flex>

@@ -16,9 +16,8 @@ export const App = () => {
     styles: {
       global: (props) => ({
         body: {
-          color: mode('gray.800', 'whiteAlpha.900')(props),
-          bg: mode('white', 'gray.800')(props),
-          boxSizing: 'border-box'
+          // color: mode('gray.800', 'whiteAlpha.900')(props),
+          bg: mode('gray.50', 'gray.900')(props)
         }
       })
     }
