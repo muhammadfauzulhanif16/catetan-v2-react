@@ -62,6 +62,7 @@ export const NavBar = ({
               text === 'Submit'
                 ? () => {
                     addNote(note, notes, setNote, setNotes)
+                    setPathName('All')
                     navigate('/')
                   }
                 : () => {
