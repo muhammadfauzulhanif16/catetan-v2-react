@@ -27,6 +27,7 @@ export const Header = ({ pathName }) => {
       bgColor='gray.50'
       pos='sticky'
       top={0}
+      h={[136, 112, 144]}
     >
       <Flex gap={4} color='yellow.300' role='group'>
         <Icon iconStart={NoteRegular} iconEnd={NoteFilled} w={12} h={12} />
@@ -35,7 +36,9 @@ export const Header = ({ pathName }) => {
       </Flex>
 
       {pathName === 'Add'
-        ? null
+        ? (
+            ''
+          )
         : (
         <InputGroup>
           <InputLeftElement role='group'>
