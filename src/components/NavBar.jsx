@@ -5,7 +5,7 @@ import { navList } from '../data/navList'
 import { Link as RRLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-export const NavBar = ({ pathName, setPathName }) => {
+export const NavBar = ({ pathName, setPathName, note }) => {
   const navs = navList(pathName)
 
   return (
@@ -21,7 +21,6 @@ export const NavBar = ({ pathName, setPathName }) => {
       bottom={0}
       right={0}
       left={0}
-      // w='full'
     >
       {navs.map(({ initIcon, finalIcon, text }, id) => (
         <Link
@@ -32,6 +31,10 @@ export const NavBar = ({ pathName, setPathName }) => {
           }`}
         >
           <Nav
+            isDisabled={
+              (text === 'Submit' && !note.title.content) ||
+              (text === 'Submit' && !note.body.content)
+            }
             setPathName={setPathName}
             initIcon={initIcon}
             finalIcon={finalIcon}
@@ -51,5 +54,6 @@ export const NavBar = ({ pathName, setPathName }) => {
 
 NavBar.propTypes = {
   pathName: PropTypes.string,
-  setPathName: PropTypes.string
+  setPathName: PropTypes.func,
+  note: PropTypes.object
 }

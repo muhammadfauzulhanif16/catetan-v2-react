@@ -11,7 +11,8 @@ export const Nav = ({
   finalColor,
   initBgColor,
   finalBgColor,
-  setPathName
+  setPathName,
+  isDisabled
 }) => {
   return (
     <Button
@@ -23,6 +24,7 @@ export const Nav = ({
       bgColor={initBgColor}
       _hover={{ color: finalColor, bgColor: finalBgColor }}
       onClick={text === 'Submit' ? () => {} : () => setPathName(text)}
+      isDisabled={isDisabled}
     >
       <Icon iconStart={initIcon} iconEnd={finalIcon} w={6} h={6} />
 
@@ -39,5 +41,6 @@ Nav.propTypes = {
   initBgColor: PropTypes.string,
   finalBgColor: PropTypes.string,
   text: PropTypes.string,
-  setPathName: PropTypes.any
+  setPathName: PropTypes.any,
+  isDisabled: PropTypes.bool
 }
