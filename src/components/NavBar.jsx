@@ -32,13 +32,6 @@ export const NavBar = ({
       left={0}
     >
       {navs.map(({ initIcon, finalIcon, text }, id) => (
-        // <Link
-        //   as={RRLink}
-        //   key={id}
-        //   to={`/${
-        //     text === 'All' ? '' : text === 'Submit' ? 'add' : text.toLowerCase()
-        //   }`}
-        // >
         <Nav
           key={id}
           initIcon={initIcon}
@@ -53,8 +46,7 @@ export const NavBar = ({
                 text === 'Add' || text === 'Submit' ? 'yellow.300' : 'gray.200'
             },
             isDisabled:
-              (text === 'Submit' && !note.title.content) ||
-              (text === 'Submit' && !note.body.content),
+              text === 'Submit' && (!note.title.content || !note.body.content),
             gap: [2, 4],
             alignItems: 'center',
             role: 'group',
@@ -78,7 +70,6 @@ export const NavBar = ({
             h: 6
           }}
         />
-        // </Link>
       ))}
     </SimpleGrid>
   )

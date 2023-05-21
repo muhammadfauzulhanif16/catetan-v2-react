@@ -48,20 +48,9 @@ export const App = () => {
         setPathName={setPathName}
       >
         <Routes>
-          <Route path='/' element={<All notes={notes} active='All' />} />
-          <Route
-            path='/add'
-            element={
-              <Add
-                note={note}
-                notes={notes}
-                setNote={setNote}
-                setNotes={setNotes}
-                active='Add'
-              />
-            }
-          />
-          <Route path='/archive' element={<Archive active='Archive' />} />
+          <Route path='/' element={<All notes={notes} />} />
+          <Route path='/add' element={<Add note={note} setNote={setNote} />} />
+          <Route path='/archive' element={<Archive />} />
         </Routes>
       </Layout>
     </ChakraProvider>
