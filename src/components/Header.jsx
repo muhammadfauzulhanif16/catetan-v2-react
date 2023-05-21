@@ -17,14 +17,11 @@ import {
   Search as SearchRegular
 } from '@emotion-icons/fluentui-system-regular'
 import PropTypes from 'prop-types'
-import { Nav } from './Nav'
-import { ArrowLeft as ArrowLeftRegular } from '@emotion-icons/fluentui-system-regular/ArrowLeft'
-import { ArrowLeft as ArrowLeftFilled } from '@emotion-icons/fluentui-system-filled/ArrowLeft'
 
 export const Header = ({ pathName }) => {
   return (
     <SimpleGrid
-      columns={pathName === 'Add' ? [2] : [1, 2]}
+      columns={[1, 2]}
       gap={[4, 0]}
       p={[4, 8, 12]}
       bgColor='gray.50'
@@ -40,14 +37,7 @@ export const Header = ({ pathName }) => {
 
       {pathName === 'Add'
         ? (
-        <Flex
-          width={40}
-          display={['flex', 'none']}
-          justifyContent='flex-end'
-          w='full'
-        >
-          <Nav initIcon={ArrowLeftRegular} finalIcon={ArrowLeftFilled} />
-        </Flex>
+            ''
           )
         : (
         <InputGroup>
