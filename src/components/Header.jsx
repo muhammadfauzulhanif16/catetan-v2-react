@@ -22,7 +22,7 @@ export const Header = () => {
     <SimpleGrid
       columns={[1, 2]}
       gap={[4, 0]}
-      py={[4, 8, 12]}
+      p={[4, 8, 12]}
       bgColor='gray.50'
       pos='sticky'
       top={0}

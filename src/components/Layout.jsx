@@ -9,13 +9,16 @@ export const Layout = ({ children }) => {
     <Flex
       direction='column'
       // color='gray.600'
-
-      px={[4, 8, 12]}
-      mb={[24, 32, 40]}
+      bgColor='blue.300'
+      h='100vh'
+      pos='fixed'
+      w='full'
     >
       <Header />
 
-      <Box h='full'>{children}</Box>
+      <Box px={[4, 8, 12]} pb={[24, 32, 40]} h='full' overflow='auto'>
+        {children}
+      </Box>
 
       <NavBar />
     </Flex>
