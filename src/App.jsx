@@ -33,17 +33,17 @@ export const App = () => {
     }
   })
 
-  const titleChange = (e) => {
-    setNote({
-      title: {
-        content: e.target.value,
-        max: 50 - e.target.value.length
-      },
-      body: {
-        content: note.body.content
-      }
-    })
-  }
+  // const titleChange = (e) => {
+  //   setNote({
+  //     title: {
+  //       content: e.target.value,
+  //       max: 50 - e.target.value.length
+  //     },
+  //     body: {
+  //       content: note.body.content
+  //     }
+  //   })
+  // }
 
   const bodyChange = (e) => {
     setNote({
@@ -67,7 +67,8 @@ export const App = () => {
             element={
               <Add
                 note={note}
-                titleChange={titleChange}
+                // titleChange={titleChange}
+                setNote={setNote}
                 bodyChange={bodyChange}
               />
             }

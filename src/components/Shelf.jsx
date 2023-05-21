@@ -1,6 +1,6 @@
 import { GridItem, SimpleGrid } from '@chakra-ui/react'
 import React from 'react'
-import { noteList } from '../data/noteList'
+import { noteList } from '../utils/noteList'
 
 export const Shelf = () => {
   const notes = noteList(50)
