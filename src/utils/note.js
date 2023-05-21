@@ -24,6 +24,14 @@ export const bodyChange = (e, note, setNote) => {
   })
 }
 
+export const archiveChange = (id, notes, setNotes) => {
+  const newNote = notes.map((note) =>
+    note.id === id ? { ...note, archived: !note.archived } : note
+  )
+
+  setNotes(newNote)
+}
+
 export const addNote = (note, notes, setNote, setNotes) => {
   const newNote = {
     id: +new Date(),

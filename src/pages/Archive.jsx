@@ -1,9 +1,14 @@
 import React from 'react'
-import { Button } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
+import { Shelf } from '../components/Shelf'
+import PropTypes from 'prop-types'
 
-export const Archive = () => {
-  const navigate = useNavigate()
+export const Archive = ({ notes, setNotes }) => {
+  notes = notes.filter(({ archived }) => archived === true)
 
-  return <Button onClick={() => navigate('/')}>Archive</Button>
+  return <Shelf notes={notes} setNotes={setNotes} />
+}
+
+Archive.propTypes = {
+  notes: PropTypes.arrayOf(PropTypes.object),
+  setNotes: PropTypes.func
 }
