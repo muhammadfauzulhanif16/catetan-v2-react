@@ -16,8 +16,9 @@ import {
   Note as NoteRegular,
   Search as SearchRegular
 } from '@emotion-icons/fluentui-system-regular'
+import PropTypes from 'prop-types'
 
-export const Header = () => {
+export const Header = ({ pathName }) => {
   return (
     <SimpleGrid
       columns={[1, 2]}
@@ -33,16 +34,29 @@ export const Header = () => {
         <Heading>Catetan</Heading>
       </Flex>
 
-      <InputGroup>
-        <InputLeftElement role='group'>
-          <Icon iconStart={SearchRegular} iconEnd={SearchFilled} w={6} h={6} />
-        </InputLeftElement>
+      {pathName === 'Add'
+        ? null
+        : (
+        <InputGroup>
+          <InputLeftElement role='group'>
+            <Icon
+              iconStart={SearchRegular}
+              iconEnd={SearchFilled}
+              w={6}
+              h={6}
+            />
+          </InputLeftElement>
 
-        <Input
-          placeholder='Search note by title...'
-          _focus={{ boxShadow: 'none', borderColor: 'yellow.300' }}
-        />
-      </InputGroup>
+          <Input
+            placeholder='Search note by title...'
+            _focus={{ boxShadow: 'none', borderColor: 'yellow.300' }}
+          />
+        </InputGroup>
+          )}
     </SimpleGrid>
   )
+}
+
+Header.propTypes = {
+  pathName: PropTypes.string
 }

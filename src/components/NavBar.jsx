@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, SimpleGrid } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import { navList } from '../data/navList'
 import { Link as RRLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-export const NavBar = () => {
-  const [pathName, setPathName] = useState('')
-
+export const NavBar = ({ pathName, setPathName }) => {
   const navs = navList(pathName)
 
   return (
@@ -52,5 +50,6 @@ export const NavBar = () => {
 }
 
 NavBar.propTypes = {
-  pathname: PropTypes.string
+  pathName: PropTypes.string,
+  setPathName: PropTypes.string
 }
