@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, SimpleGrid } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import { navList } from '../data/navList'
@@ -6,8 +6,9 @@ import { Link as RRLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 export const NavBar = () => {
-  const { pathname } = window.location
-  const navs = navList(pathname)
+  const [pathName, setPathName] = useState('')
+
+  const navs = navList(pathName)
 
   return (
     <SimpleGrid
@@ -33,6 +34,7 @@ export const NavBar = () => {
           }`}
         >
           <Nav
+            setPathName={setPathName}
             initIcon={initIcon}
             finalIcon={finalIcon}
             text={text}
