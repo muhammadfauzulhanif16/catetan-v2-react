@@ -17,13 +17,18 @@ export const AddForm = ({ note, setNote }) => {
       <GridItem colSpan={[0, 2]} colStart={[0, 2]}>
         <FormControl mb={[4, 8, 12]}>
           <FormLabel>Title</FormLabel>
-          <Input onChange={(e) => titleChange(e, note, setNote)} />
+          <Input
+            value={note.title.content}
+            onChange={(e) => titleChange(e, note, setNote)}
+            placeholder='Enter a title'
+          />
           <FormHelperText>{`Max ${note.title.max} chars left.`}</FormHelperText>
         </FormControl>
 
         <FormControl>
           <FormLabel>Content</FormLabel>
           <Textarea
+            value={note.body.content}
             placeholder='Type anything'
             onChange={(e) => bodyChange(e, note, setNote)}
           />

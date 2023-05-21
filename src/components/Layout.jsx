@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react'
 import { NavBar } from './NavBar'
 import { Header } from './Header'
 
-export const Layout = ({ note, children }) => {
+export const Layout = ({ note, notes, setNote, setNotes, children }) => {
   const [pathName, setPathName] = useState('')
 
   return (
@@ -15,12 +15,22 @@ export const Layout = ({ note, children }) => {
         {children}
       </Box>
 
-      <NavBar pathName={pathName} setPathName={setPathName} note={note} />
+      <NavBar
+        pathName={pathName}
+        setPathName={setPathName}
+        note={note}
+        notes={notes}
+        setNote={setNote}
+        setNotes={setNotes}
+      />
     </Box>
   )
 }
 
 Layout.propTypes = {
   children: PropTypes.element,
-  note: PropTypes.object
+  note: PropTypes.object,
+  notes: PropTypes.arrayOf(PropTypes.object),
+  setNote: PropTypes.func,
+  setNotes: PropTypes.func
 }

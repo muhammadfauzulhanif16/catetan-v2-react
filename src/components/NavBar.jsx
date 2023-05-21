@@ -2,10 +2,18 @@ import React from 'react'
 import { Link, SimpleGrid } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import { navList } from '../utils/navList'
-import { Link as RRLink } from 'react-router-dom'
+import { Link as RRLink, redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { addNote } from '../utils/note'
 
-export const NavBar = ({ pathName, setPathName, note }) => {
+export const NavBar = ({
+  pathName,
+  setPathName,
+  note,
+  notes,
+  setNote,
+  setNotes
+}) => {
   const navs = navList(pathName)
 
   return (
@@ -35,7 +43,14 @@ export const NavBar = ({ pathName, setPathName, note }) => {
               (text === 'Submit' && !note.title.content) ||
               (text === 'Submit' && !note.body.content)
             }
-            onClick={text === 'Submit' ? () => {} : () => setPathName(text)}
+            onClick={
+              text === 'Submit'
+                ? () => {
+                    addNote(note, notes, setNote, setNotes)
+                    redirect('/')
+                  }
+                : () => setPathName(text)
+            }
             setPathName={setPathName}
             initIcon={initIcon}
             finalIcon={finalIcon}
@@ -57,5 +72,8 @@ export const NavBar = ({ pathName, setPathName, note }) => {
 NavBar.propTypes = {
   pathName: PropTypes.string,
   setPathName: PropTypes.func,
-  note: PropTypes.object
+  note: PropTypes.object,
+  notes: PropTypes.arrayOf(PropTypes.object),
+  setNote: PropTypes.func,
+  setNotes: PropTypes.func
 }

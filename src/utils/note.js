@@ -23,3 +23,25 @@ export const bodyChange = (e, note, setNote) => {
     }
   })
 }
+
+export const addNote = (note, notes, setNote, setNotes) => {
+  const newNote = {
+    id: +new Date(),
+    title: note.title.content,
+    body: note.body.content,
+    archived: false,
+    createdAt: new Date().toLocaleString()
+  }
+
+  setNotes([...notes, newNote])
+
+  setNote({
+    title: {
+      content: '',
+      max: 50
+    },
+    body: {
+      content: ''
+    }
+  })
+}
