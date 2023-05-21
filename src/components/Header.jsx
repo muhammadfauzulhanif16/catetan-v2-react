@@ -24,7 +24,7 @@ import { ArrowLeft as ArrowLeftFilled } from '@emotion-icons/fluentui-system-fil
 export const Header = ({ pathName }) => {
   return (
     <SimpleGrid
-      columns={2}
+      columns={pathName === 'Add' ? [2] : [1, 2]}
       gap={[4, 0]}
       p={[4, 8, 12]}
       bgColor='gray.50'
