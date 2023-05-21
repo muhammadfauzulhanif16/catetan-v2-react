@@ -16,7 +16,7 @@ export const App = () => {
     styles: {
       global: (props) => ({
         body: {
-          // color: mode('gray.800', 'whiteAlpha.900')(props),
+          color: mode('gray.600', 'gray.300')(props),
           bg: mode('gray.50', 'gray.900')(props)
         }
       })
@@ -24,7 +24,6 @@ export const App = () => {
   })
 
   const [notes, setNotes] = useState([])
-
   const [note, setNote] = useState({
     title: {
       content: '',

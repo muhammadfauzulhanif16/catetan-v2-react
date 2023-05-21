@@ -1,4 +1,6 @@
 {
   "arrowParens": "always",
-  "jsxSingleQuote": true
+  "jsxSingleQuote": true,
+  "singleQuote": true,
+  "semi": false
 }

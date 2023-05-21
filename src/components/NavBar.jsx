@@ -19,7 +19,6 @@ export const NavBar = ({
 
   return (
     <SimpleGrid
-      boxShadow='xs'
       columns={3}
       m={[4, 8, 12]}
       bgColor='gray.100'

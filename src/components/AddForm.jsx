@@ -21,6 +21,7 @@ export const AddForm = ({ note, setNote }) => {
             value={note.title.content}
             onChange={(e) => titleChange(e, note, setNote)}
             placeholder='Enter a title'
+            _focus={{ boxShadow: 'none', borderColor: 'yellow.300' }}
           />
           <FormHelperText>{`Max ${note.title.max} chars left.`}</FormHelperText>
         </FormControl>
@@ -31,6 +32,8 @@ export const AddForm = ({ note, setNote }) => {
             value={note.body.content}
             placeholder='Type anything'
             onChange={(e) => bodyChange(e, note, setNote)}
+            _focus={{ boxShadow: 'none', borderColor: 'yellow.300' }}
+            resize='none'
           />
           <FormHelperText>{"Can't be empty."}</FormHelperText>
         </FormControl>
