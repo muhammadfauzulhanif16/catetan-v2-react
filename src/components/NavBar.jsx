@@ -2,9 +2,8 @@ import React from 'react'
 import { Link, SimpleGrid } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import { navList } from '../utils/navList'
-import { Link as RRLink, redirect } from 'react-router-dom'
+import { Link as RRLink, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { addNote } from '../utils/note'
 
 export const NavBar = ({
   pathName,
@@ -15,6 +14,7 @@ export const NavBar = ({
   setNotes
 }) => {
   const navs = navList(pathName)
+  const navigate = useNavigate()
 
   return (
     <SimpleGrid
@@ -46,8 +46,8 @@ export const NavBar = ({
             onClick={
               text === 'Submit'
                 ? () => {
-                    addNote(note, notes, setNote, setNotes)
-                    redirect('/')
+                    navigate('/')
+                    // addNote(note, notes, setNote, setNotes)
                   }
                 : () => setPathName(text)
             }

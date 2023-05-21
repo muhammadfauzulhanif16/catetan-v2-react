@@ -1,6 +1,9 @@
 import React from 'react'
-import { Text } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 
 export const Archive = () => {
-  return <Text>Archive</Text>
+  const navigate = useNavigate()
+
+  return <Button onClick={() => navigate('/')}>Archive</Button>
 }

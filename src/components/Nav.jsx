@@ -17,7 +17,7 @@ export const Nav = ({
 }) => {
   return (
     <Button
-      // gap={[2, 4]}
+      gap={[2, 4]}
       // w='full'
       alignItems='center'
       role='group'
@@ -44,6 +44,6 @@ Nav.propTypes = {
   finalBgColor: PropTypes.string,
   text: PropTypes.string,
   isDisabled: PropTypes.bool,
-  onClick: PropTypes.func,
+  onClick: PropTypes.any,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
