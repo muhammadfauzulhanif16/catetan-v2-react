@@ -1,6 +1,6 @@
 export const titleChange = (e, note, setNote) => {
   if (e.target.value.length <= 50) {
-    setNote({
+    return setNote({
       title: {
         content: e.target.value,
         max: 50 - e.target.value.length
@@ -9,7 +9,17 @@ export const titleChange = (e, note, setNote) => {
         content: note.body.content
       }
     })
-
-    return setNote
   }
+}
+
+export const bodyChange = (e, note, setNote) => {
+  return setNote({
+    title: {
+      content: note.title.content,
+      max: note.title.max
+    },
+    body: {
+      content: e.target.value
+    }
+  })
 }

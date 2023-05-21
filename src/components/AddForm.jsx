@@ -23,7 +23,10 @@ export const AddForm = ({ note, setNote, bodyChange }) => {
 
         <FormControl>
           <FormLabel>Content</FormLabel>
-          <Textarea placeholder='Type anything' onChange={bodyChange} />
+          <Textarea
+            placeholder='Type anything'
+            onChange={(e) => bodyChange(e, note, setNote)}
+          />
           <FormHelperText>{"Can't be empty."}</FormHelperText>
         </FormControl>
       </GridItem>

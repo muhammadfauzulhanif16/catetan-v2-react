@@ -33,46 +33,12 @@ export const App = () => {
     }
   })
 
-  // const titleChange = (e) => {
-  //   setNote({
-  //     title: {
-  //       content: e.target.value,
-  //       max: 50 - e.target.value.length
-  //     },
-  //     body: {
-  //       content: note.body.content
-  //     }
-  //   })
-  // }
-
-  const bodyChange = (e) => {
-    setNote({
-      title: {
-        content: note.title.content,
-        max: note.title.max
-      },
-      body: {
-        content: e.target.value
-      }
-    })
-  }
-
   return (
     <ChakraProvider theme={theme}>
       <Layout note={note}>
         <Routes>
           <Route path='/' element={<All />} />
-          <Route
-            path='/add'
-            element={
-              <Add
-                note={note}
-                // titleChange={titleChange}
-                setNote={setNote}
-                bodyChange={bodyChange}
-              />
-            }
-          />
+          <Route path='/add' element={<Add note={note} setNote={setNote} />} />
           <Route path='/archive' element={<Archive />} />
         </Routes>
       </Layout>
