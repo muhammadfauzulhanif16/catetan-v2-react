@@ -38,6 +38,7 @@ export const NavBar = ({
           finalIcon={finalIcon}
           text={text}
           buttonProps={{
+            color: `${pathName === text ? 'yellow.600' : ''}`,
             w: 'full',
             bgColor:
               text === 'Add' || text === 'Submit' ? 'yellow.200' : 'gray.100',
