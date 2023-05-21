@@ -35,6 +35,7 @@ export const NavBar = ({ pathName, setPathName, note }) => {
               (text === 'Submit' && !note.title.content) ||
               (text === 'Submit' && !note.body.content)
             }
+            onClick={text === 'Submit' ? () => {} : () => setPathName(text)}
             setPathName={setPathName}
             initIcon={initIcon}
             finalIcon={finalIcon}
@@ -45,6 +46,7 @@ export const NavBar = ({ pathName, setPathName, note }) => {
             finalBgColor={
               text === 'Add' || text === 'Submit' ? 'yellow.300' : 'gray.200'
             }
+            width='full'
           />
         </Link>
       ))}

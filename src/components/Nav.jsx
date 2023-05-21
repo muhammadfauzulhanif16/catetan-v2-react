@@ -11,20 +11,22 @@ export const Nav = ({
   finalColor,
   initBgColor,
   finalBgColor,
-  setPathName,
-  isDisabled
+  isDisabled,
+  onClick,
+  width
 }) => {
   return (
     <Button
-      gap={[2, 4]}
-      w='full'
+      // gap={[2, 4]}
+      // w='full'
       alignItems='center'
       role='group'
       color={initColor}
       bgColor={initBgColor}
       _hover={{ color: finalColor, bgColor: finalBgColor }}
-      onClick={text === 'Submit' ? () => {} : () => setPathName(text)}
+      onClick={onClick}
       isDisabled={isDisabled}
+      w={width}
     >
       <Icon iconStart={initIcon} iconEnd={finalIcon} w={6} h={6} />
 
@@ -41,6 +43,7 @@ Nav.propTypes = {
   initBgColor: PropTypes.string,
   finalBgColor: PropTypes.string,
   text: PropTypes.string,
-  setPathName: PropTypes.any,
-  isDisabled: PropTypes.bool
+  isDisabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 }
