@@ -1,12 +1,14 @@
 import {
   Add as AddRegular,
   AppsList as AppListRegular,
-  Archive as ArchiveRegular
+  Archive as ArchiveRegular,
+  Send as SendRegular
 } from '@emotion-icons/fluentui-system-regular'
 import {
   Add as AddFilled,
   AppsList as AppListFilled,
-  Archive as ArchiveFilled
+  Archive as ArchiveFilled,
+  Send as SendFilled
 } from '@emotion-icons/fluentui-system-filled'
 
 export const navList = (pathName) => [
@@ -16,8 +18,8 @@ export const navList = (pathName) => [
     text: 'All'
   },
   {
-    initIcon: AddRegular,
-    finalIcon: AddFilled,
+    initIcon: pathName === 'Add' ? SendRegular : AddRegular,
+    finalIcon: pathName === 'Add' ? SendFilled : AddFilled,
     text: pathName === 'Add' ? 'Submit' : 'Add'
   },
   {
