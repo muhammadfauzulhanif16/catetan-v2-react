@@ -5,9 +5,25 @@ import PropTypes from 'prop-types'
 export const All = ({ notes }) => {
   notes = notes.filter(({ archived }) => archived === false)
 
-  return <Shelf notes={notes} />
+  return (
+    <>
+      <Shelf notes={notes} />
+
+      {/* <NavBar */}
+      {/*  pathName={pathName} */}
+      {/*  setPathName={setPathName} */}
+      {/*  note={note} */}
+      {/*  notes={notes} */}
+      {/*  setNote={setNote} */}
+      {/*  setNotes={setNotes} */}
+      {/* /> */}
+    </>
+  )
 }
 
 All.propTypes = {
-  notes: PropTypes.arrayOf(PropTypes.object)
+  note: PropTypes.object,
+  notes: PropTypes.arrayOf(PropTypes.object),
+  setNote: PropTypes.func,
+  setNotes: PropTypes.func
 }

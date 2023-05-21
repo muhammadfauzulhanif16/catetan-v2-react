@@ -35,11 +35,20 @@ export const App = () => {
     }
   })
 
+  const [pathName, setPathName] = useState('')
+
   return (
     <ChakraProvider theme={theme}>
-      <Layout note={note} notes={notes} setNote={setNote} setNotes={setNotes}>
+      <Layout
+        note={note}
+        notes={notes}
+        setNote={setNote}
+        setNotes={setNotes}
+        pathName={pathName}
+        setPathName={setPathName}
+      >
         <Routes>
-          <Route path='/' element={<All notes={notes} />} />
+          <Route path='/' element={<All notes={notes} active='All' />} />
           <Route
             path='/add'
             element={
@@ -48,10 +57,11 @@ export const App = () => {
                 notes={notes}
                 setNote={setNote}
                 setNotes={setNotes}
+                active='Add'
               />
             }
           />
-          <Route path='/archive' element={<Archive />} />
+          <Route path='/archive' element={<Archive active='Archive' />} />
         </Routes>
       </Layout>
     </ChakraProvider>

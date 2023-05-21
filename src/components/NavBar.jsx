@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link, SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import { navList } from '../utils/navList'
-import { Link as RRLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { addNote } from '../utils/note'
 
 export const NavBar = ({
   pathName,
@@ -31,39 +32,52 @@ export const NavBar = ({
       left={0}
     >
       {navs.map(({ initIcon, finalIcon, text }, id) => (
-        <Link
-          as={RRLink}
+        // <Link
+        //   as={RRLink}
+        //   key={id}
+        //   to={`/${
+        //     text === 'All' ? '' : text === 'Submit' ? 'add' : text.toLowerCase()
+        //   }`}
+        // >
+        <Nav
           key={id}
-          to={`/${
-            text === 'All' ? '' : text === 'Submit' ? 'add' : text.toLowerCase()
-          }`}
-        >
-          <Nav
-            isDisabled={
+          initIcon={initIcon}
+          finalIcon={finalIcon}
+          text={text}
+          buttonProps={{
+            w: 'full',
+            bgColor:
+              text === 'Add' || text === 'Submit' ? 'yellow.200' : 'gray.100',
+            _hover: {
+              bgColor:
+                text === 'Add' || text === 'Submit' ? 'yellow.300' : 'gray.200'
+            },
+            isDisabled:
               (text === 'Submit' && !note.title.content) ||
-              (text === 'Submit' && !note.body.content)
-            }
-            onClick={
+              (text === 'Submit' && !note.body.content),
+            gap: [2, 4],
+            alignItems: 'center',
+            role: 'group',
+            onClick:
               text === 'Submit'
                 ? () => {
+                    addNote(note, notes, setNote, setNotes)
                     navigate('/')
-                    // addNote(note, notes, setNote, setNotes)
                   }
-                : () => setPathName(text)
-            }
-            setPathName={setPathName}
-            initIcon={initIcon}
-            finalIcon={finalIcon}
-            text={text}
-            initBgColor={
-              text === 'Add' || text === 'Submit' ? 'yellow.200' : 'gray.100'
-            }
-            finalBgColor={
-              text === 'Add' || text === 'Submit' ? 'yellow.300' : 'gray.200'
-            }
-            width='full'
-          />
-        </Link>
+                : () => {
+                    setPathName(text)
+                    navigate(`/${text === 'All' ? '' : text.toLowerCase()}`)
+                  }
+          }}
+          textProps={{
+            fontSize: 'sm'
+          }}
+          iconProps={{
+            w: 6,
+            h: 6
+          }}
+        />
+        // </Link>
       ))}
     </SimpleGrid>
   )

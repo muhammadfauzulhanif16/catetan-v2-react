@@ -30,7 +30,14 @@ export const Header = ({ pathName }) => {
       h={[136, 112, 144]}
     >
       <Flex gap={4} color='yellow.300' role='group'>
-        <Icon iconStart={NoteRegular} iconEnd={NoteFilled} w={12} h={12} />
+        <Icon
+          initIcon={NoteRegular}
+          finalIcon={NoteFilled}
+          iconProps={{
+            w: 12,
+            h: 12
+          }}
+        />
 
         <Heading>Catetan</Heading>
       </Flex>
@@ -43,10 +50,12 @@ export const Header = ({ pathName }) => {
         <InputGroup>
           <InputLeftElement role='group'>
             <Icon
-              iconStart={SearchRegular}
-              iconEnd={SearchFilled}
-              w={6}
-              h={6}
+              initIcon={SearchRegular}
+              finalIcon={SearchFilled}
+              iconProps={{
+                w: 6,
+                h: 6
+              }}
             />
           </InputLeftElement>
 

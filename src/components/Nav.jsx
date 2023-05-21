@@ -7,30 +7,15 @@ export const Nav = ({
   initIcon,
   finalIcon,
   text,
-  initColor,
-  finalColor,
-  initBgColor,
-  finalBgColor,
-  isDisabled,
-  onClick,
-  width
+  buttonProps,
+  textProps,
+  iconProps
 }) => {
   return (
-    <Button
-      gap={[2, 4]}
-      // w='full'
-      alignItems='center'
-      role='group'
-      color={initColor}
-      bgColor={initBgColor}
-      _hover={{ color: finalColor, bgColor: finalBgColor }}
-      onClick={onClick}
-      isDisabled={isDisabled}
-      w={width}
-    >
-      <Icon iconStart={initIcon} iconEnd={finalIcon} w={6} h={6} />
+    <Button {...buttonProps}>
+      <Icon initIcon={initIcon} finalIcon={finalIcon} iconProps={iconProps} />
 
-      <Text fontSize='sm'>{text ?? text}</Text>
+      <Text {...textProps}>{text ?? text}</Text>
     </Button>
   )
 }
@@ -38,12 +23,8 @@ export const Nav = ({
 Nav.propTypes = {
   initIcon: PropTypes.elementType.isRequired,
   finalIcon: PropTypes.elementType.isRequired,
-  initColor: PropTypes.string,
-  finalColor: PropTypes.string,
-  initBgColor: PropTypes.string,
-  finalBgColor: PropTypes.string,
   text: PropTypes.string,
-  isDisabled: PropTypes.bool,
-  onClick: PropTypes.any,
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  buttonProps: PropTypes.object,
+  textProps: PropTypes.object,
+  iconProps: PropTypes.object
 }

@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Box } from '@chakra-ui/react'
-import { NavBar } from './NavBar'
 import { Header } from './Header'
+import { NavBar } from './NavBar'
 
-export const Layout = ({ note, notes, setNote, setNotes, children }) => {
-  const [pathName, setPathName] = useState('')
-
+export const Layout = ({
+  note,
+  notes,
+  setNote,
+  setNotes,
+  pathName,
+  setPathName,
+  children
+}) => {
   return (
     <Box w='full'>
       <Header pathName={pathName} />
@@ -32,5 +38,7 @@ Layout.propTypes = {
   note: PropTypes.object,
   notes: PropTypes.arrayOf(PropTypes.object),
   setNote: PropTypes.func,
-  setNotes: PropTypes.func
+  setNotes: PropTypes.func,
+  pathName: PropTypes.string,
+  setPathName: PropTypes.func
 }

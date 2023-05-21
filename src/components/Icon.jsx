@@ -2,30 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Icon as IconChakra } from '@chakra-ui/react'
 
-export const Icon = ({ iconStart, iconEnd, w, h }) => {
+export const Icon = ({ initIcon, finalIcon, iconProps }) => {
   return (
     <>
       <IconChakra
-        as={iconStart}
-        w={w}
-        h={h}
+        as={initIcon}
         _groupHover={{ display: 'none' }}
+        {...iconProps}
       />
 
       <IconChakra
-        as={iconEnd}
-        w={w}
-        h={h}
+        as={finalIcon}
         display='none'
         _groupHover={{ display: 'block' }}
+        {...iconProps}
       />
     </>
   )
 }
 
 Icon.propTypes = {
-  iconStart: PropTypes.elementType.isRequired,
-  iconEnd: PropTypes.elementType.isRequired,
-  w: PropTypes.number.isRequired,
-  h: PropTypes.number.isRequired
+  initIcon: PropTypes.elementType.isRequired,
+  finalIcon: PropTypes.elementType.isRequired,
+  iconProps: PropTypes.object
 }
