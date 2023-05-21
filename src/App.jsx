@@ -35,7 +35,7 @@ export const App = () => {
     }
   })
 
-  const [pathName, setPathName] = useState('')
+  const [pathName, setPathName] = useState('All')
 
   return (
     <ChakraProvider theme={theme}>
