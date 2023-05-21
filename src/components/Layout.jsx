@@ -11,14 +11,12 @@ export const Layout = ({ children }) => {
       color='gray.600'
       bgColor='gray.50'
       px={[4, 8, 12]}
-      // w='100vw'
-      // pos='fixed'
       gap={[4, 8, 12]}
-      // boxSizing='content-box'
+      mb={[24, 32, 40]}
     >
       <Header />
 
-      <Flex flexGrow={1} bgColor='green.200' h={0}>
+      <Flex flexGrow={1} bgColor='green.200'>
         {children}
       </Flex>
 

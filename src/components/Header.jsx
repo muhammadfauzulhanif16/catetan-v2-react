@@ -22,10 +22,10 @@ export const Header = () => {
     <SimpleGrid
       columns={[1, 2]}
       gap={[4, 0]}
-      mt={[4, 8, 12]}
+      py={[4, 8, 12]}
+      bgColor='gray.50'
       pos='sticky'
       top={0}
-      bgColor='gray.50'
     >
       <Flex gap={4} color='yellow.300' role='group'>
         <Icon iconStart={NoteRegular} iconEnd={NoteFilled} w={12} h={12} />
