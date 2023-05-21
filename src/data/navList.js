@@ -9,7 +9,7 @@ import {
   Archive as ArchiveFilled
 } from '@emotion-icons/fluentui-system-filled'
 
-export const navList = () => [
+export const navList = (pathname) => [
   {
     initIcon: AppListRegular,
     finalIcon: AppListFilled,
@@ -18,7 +18,7 @@ export const navList = () => [
   {
     initIcon: AddRegular,
     finalIcon: AddFilled,
-    text: 'Add'
+    text: pathname === '/add' ? 'Submit' : 'Add'
   },
   {
     initIcon: ArchiveRegular,

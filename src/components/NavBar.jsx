@@ -3,9 +3,11 @@ import { Link, SimpleGrid } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import { navList } from '../data/navList'
 import { Link as RRLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 export const NavBar = () => {
-  const navs = navList()
+  const { pathname } = window.location
+  const navs = navList(pathname)
 
   return (
     <SimpleGrid
@@ -26,17 +28,27 @@ export const NavBar = () => {
         <Link
           as={RRLink}
           key={id}
-          to={`/${text === 'All' ? '' : text.toLowerCase()}`}
+          to={`/${
+            text === 'All' ? '' : text === 'Submit' ? 'add' : text.toLowerCase()
+          }`}
         >
           <Nav
             initIcon={initIcon}
             finalIcon={finalIcon}
             text={text}
-            initBgColor={text === 'Add' ? 'yellow.200' : 'gray.100'}
-            finalBgColor={text === 'Add' ? 'yellow.300' : 'gray.200'}
+            initBgColor={
+              text === 'Add' || text === 'Submit' ? 'yellow.200' : 'gray.100'
+            }
+            finalBgColor={
+              text === 'Add' || text === 'Submit' ? 'yellow.300' : 'gray.200'
+            }
           />
         </Link>
       ))}
     </SimpleGrid>
   )
+}
+
+NavBar.propTypes = {
+  pathname: PropTypes.string
 }
