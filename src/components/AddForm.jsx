@@ -9,9 +9,9 @@ import {
   Textarea
 } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
-import { titleChange } from '../utils/note'
+import { bodyChange, titleChange } from '../utils/note'
 
-export const AddForm = ({ note, setNote, bodyChange }) => {
+export const AddForm = ({ note, setNote }) => {
   return (
     <Grid h='full' templateColumns={['repeat(1, 1fr)', 'repeat(4, 1fr)']}>
       <GridItem colSpan={[0, 2]} colStart={[0, 2]}>
