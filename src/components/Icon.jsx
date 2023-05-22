@@ -23,6 +23,6 @@ export const Icon = ({ initIcon, finalIcon, iconProps }) => {
 
 Icon.propTypes = {
   initIcon: PropTypes.elementType.isRequired,
-  finalIcon: PropTypes.elementType.isRequired,
+  finalIcon: PropTypes.elementType,
   iconProps: PropTypes.object
 }

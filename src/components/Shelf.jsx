@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Flex, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import { Item } from './Item'
 import { Icon } from './Icon'
 import { Note } from '@emotion-icons/fluentui-system-filled'
 
-export const Shelf = ({ notes, setNotes }) => {
+export const Shelf = ({ notes, setNotes, active }) => {
   return (
     <>
       {notes.length > 0
@@ -32,9 +32,10 @@ export const Shelf = ({ notes, setNotes }) => {
             }}
           />
 
-          <Text textAlign='center'>
-            No notes yet. <br /> Add one or more notes.-
-          </Text>
+          <Box>
+            <Text textAlign='center'>{`No ${active} notes yet.`}</Text>
+            <Text textAlign='center'>Add one or more notes.</Text>
+          </Box>
         </Flex>
           )}
     </>
@@ -43,5 +44,6 @@ export const Shelf = ({ notes, setNotes }) => {
 
 Shelf.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object),
-  setNotes: PropTypes.func
+  setNotes: PropTypes.func,
+  active: PropTypes.string
 }

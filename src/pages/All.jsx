@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 export const All = ({ notes, setNotes }) => {
   notes = notes.filter(({ archived }) => archived === false)
 
-  return <Shelf notes={notes} setNotes={setNotes} />
+  return <Shelf notes={notes} setNotes={setNotes} active='all' />
 }
 
 All.propTypes = {
