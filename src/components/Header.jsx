@@ -28,6 +28,7 @@ export const Header = ({ pathName }) => {
       pos='sticky'
       top={0}
       h={[136, 112, 144]}
+      zIndex={2}
     >
       <Flex gap={4} color='yellow.300' role='group'>
         <Icon

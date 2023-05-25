@@ -4,15 +4,7 @@ import { Box } from '@chakra-ui/react'
 import { Header } from './Header'
 import { NavBar } from './NavBar'
 
-export const Layout = ({
-  note,
-  notes,
-  setNote,
-  setNotes,
-  pathName,
-  setPathName,
-  children
-}) => {
+export const Layout = ({ note, pathName, setPathName, children, addNote }) => {
   return (
     <Box w='full'>
       <Header pathName={pathName} />
@@ -25,9 +17,7 @@ export const Layout = ({
         pathName={pathName}
         setPathName={setPathName}
         note={note}
-        notes={notes}
-        setNote={setNote}
-        setNotes={setNotes}
+        addNote={addNote}
       />
     </Box>
   )
@@ -36,9 +26,7 @@ export const Layout = ({
 Layout.propTypes = {
   children: PropTypes.element,
   note: PropTypes.object,
-  notes: PropTypes.arrayOf(PropTypes.object),
-  setNote: PropTypes.func,
-  setNotes: PropTypes.func,
   pathName: PropTypes.string,
-  setPathName: PropTypes.func
+  setPathName: PropTypes.func,
+  addNote: PropTypes.func
 }

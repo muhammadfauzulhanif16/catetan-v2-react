@@ -2,13 +2,15 @@ import React from 'react'
 import { Shelf } from '../components/Shelf'
 import PropTypes from 'prop-types'
 
-export const Archive = ({ notes, setNotes }) => {
-  notes = notes.filter(({ archived }) => archived === true)
+export const Archive = ({ notes, archiveChange }) => {
+  const archiveNote = notes.filter(({ archived }) => archived === true)
 
-  return <Shelf notes={notes} setNotes={setNotes} active='archive' />
+  return (
+    <Shelf notes={archiveNote} active='archive' archiveChange={archiveChange} />
+  )
 }
 
 Archive.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object),
-  setNotes: PropTypes.func
+  archiveChange: PropTypes.func
 }

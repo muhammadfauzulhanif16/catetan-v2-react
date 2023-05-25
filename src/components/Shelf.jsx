@@ -3,16 +3,17 @@ import PropTypes from 'prop-types'
 import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import { Item } from './Item'
 import { Icon } from './Icon'
-import { Note } from '@emotion-icons/fluentui-system-filled'
+import { Note as NoteFilled } from '@emotion-icons/fluentui-system-filled'
+import { Note as NoteRegular } from '@emotion-icons/fluentui-system-regular'
 
-export const Shelf = ({ notes, setNotes, active }) => {
+export const Shelf = ({ notes, active, archiveChange }) => {
   return (
     <>
       {notes.length > 0
         ? (
         <SimpleGrid columns={[1, 2, 2, 3]} gap={4} w='full' pb={[24, 32, 40]}>
-          {notes?.map((note) => (
-            <Item key={note.id} data={note} notes={notes} setNotes={setNotes} />
+          {notes.map((note) => (
+            <Item key={note.id} data={note} archiveChange={archiveChange} />
           ))}
         </SimpleGrid>
           )
@@ -23,9 +24,11 @@ export const Shelf = ({ notes, setNotes, active }) => {
           gap={4}
           color='gray.300'
           py={[32, 32, 24]}
+          role='group'
         >
           <Icon
-            initIcon={Note}
+            initIcon={NoteFilled}
+            finalIcon={NoteRegular}
             iconProps={{
               w: 16,
               h: 16
@@ -44,6 +47,6 @@ export const Shelf = ({ notes, setNotes, active }) => {
 
 Shelf.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object),
-  setNotes: PropTypes.func,
-  active: PropTypes.string
+  active: PropTypes.string,
+  archiveChange: PropTypes.func
 }

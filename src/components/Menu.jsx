@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Button,
   Menu as MenuChakra,
   MenuButton,
   MenuItem,
@@ -8,32 +7,26 @@ import {
 } from '@chakra-ui/react'
 import { Nav } from './Nav'
 import { MoreHorizontal as MoreHorizontalFilled } from '@emotion-icons/fluentui-system-filled'
-import { MoreHorizontal as MoreHorizontalRegular } from '@emotion-icons/fluentui-system-regular'
+import {
+  Archive,
+  MoreHorizontal as MoreHorizontalRegular
+} from '@emotion-icons/fluentui-system-regular'
 // import { menuList } from '../utils/menuList'
 import PropTypes from 'prop-types'
-import { archiveChange } from '../utils/note'
 
-export const Menu = ({ data, notes, setNotes }) => {
+export const Menu = ({ data, archiveChange }) => {
   // const menus = menuList()
+  // const { archiveChange } = Note()
 
   return (
     <MenuChakra>
-      <MenuButton
-        as={Button}
-        p={0}
-        variant='ghost'
-        _hover={{
-          bgColor: 'yellow.200'
-        }}
-        _active={{
-          bgColor: 'yellow.200'
-        }}
-      >
+      <MenuButton>
         <Nav
           initIcon={MoreHorizontalRegular}
           finalIcon={MoreHorizontalFilled}
           buttonProps={{
             variant: 'ghost',
+            bgColor: 'yellow.100',
             _hover: {
               bgColor: 'yellow.200'
             }
@@ -42,8 +35,11 @@ export const Menu = ({ data, notes, setNotes }) => {
       </MenuButton>
 
       <MenuList>
-        <MenuItem onClick={() => archiveChange(data.id, notes, setNotes)}>
-          {data.archived ? 'Unarchive' : 'Archive'}
+        <MenuItem
+          icon={<Archive width={24} height={24} />}
+          onClick={() => archiveChange(data.id)}
+        >
+          {data.archived ? 'Unarchived' : 'Archived'}
         </MenuItem>
       </MenuList>
     </MenuChakra>
@@ -52,6 +48,5 @@ export const Menu = ({ data, notes, setNotes }) => {
 
 Menu.propTypes = {
   data: PropTypes.object,
-  notes: PropTypes.arrayOf(PropTypes.object),
-  setNotes: PropTypes.func
+  archiveChange: PropTypes.func
 }
