@@ -25,6 +25,6 @@ export const navList = (pathName) => [
   {
     initIcon: ArchiveRegular,
     finalIcon: ArchiveFilled,
-    text: 'Archive'
+    text: 'Archived'
   }
 ]
