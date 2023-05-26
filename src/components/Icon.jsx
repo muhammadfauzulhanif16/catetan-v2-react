@@ -7,16 +7,22 @@ export const Icon = ({ initIcon, finalIcon, iconProps }) => {
     <>
       <IconChakra
         as={initIcon}
-        _groupHover={{ display: 'none' }}
+        _groupHover={{ display: `${finalIcon ? 'none' : 'block'}` }}
         {...iconProps}
       />
 
-      <IconChakra
-        as={finalIcon}
-        display='none'
-        _groupHover={{ display: 'block' }}
-        {...iconProps}
-      />
+      {finalIcon
+        ? (
+        <IconChakra
+          as={finalIcon}
+          display='none'
+          _groupHover={{ display: 'block' }}
+          {...iconProps}
+        />
+          )
+        : (
+            ''
+          )}
     </>
   )
 }

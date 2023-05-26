@@ -4,7 +4,6 @@ import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import { Item } from './Item'
 import { Icon } from './Icon'
 import { Note as NoteFilled } from '@emotion-icons/fluentui-system-filled'
-import { Note as NoteRegular } from '@emotion-icons/fluentui-system-regular'
 
 export const Shelf = ({ notes, active, archiveChange }) => {
   return (
@@ -28,7 +27,6 @@ export const Shelf = ({ notes, active, archiveChange }) => {
         >
           <Icon
             initIcon={NoteFilled}
-            finalIcon={NoteRegular}
             iconProps={{
               w: 16,
               h: 16

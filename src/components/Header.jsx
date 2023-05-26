@@ -8,10 +8,7 @@ import {
   SimpleGrid
 } from '@chakra-ui/react'
 import { Icon } from './Icon'
-import {
-  Note as NoteFilled,
-  Search as SearchFilled
-} from '@emotion-icons/fluentui-system-filled'
+import { Search as SearchFilled } from '@emotion-icons/fluentui-system-filled'
 import {
   Note as NoteRegular,
   Search as SearchRegular
@@ -33,7 +30,6 @@ export const Header = ({ pathName }) => {
       <Flex gap={4} color='yellow.300' role='group'>
         <Icon
           initIcon={NoteRegular}
-          finalIcon={NoteFilled}
           iconProps={{
             w: 12,
             h: 12
