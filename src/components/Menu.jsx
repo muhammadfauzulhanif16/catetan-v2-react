@@ -43,12 +43,12 @@ export const Menu = ({ data, onArchive, onDelete }) => {
     <MenuChakra>
       <MenuButton
         as={IconButton}
-        bgColor='yellow.200'
+        bgColor='yellow.100'
         _hover={{
-          bgColor: 'yellow.300'
+          bgColor: 'yellow.200'
         }}
         _active={{
-          bgColor: 'yellow.300'
+          bgColor: 'yellow.200'
         }}
         icon={<MoreHorizontal width={16} height={16} />}
       />
