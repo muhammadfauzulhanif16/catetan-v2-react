@@ -2,13 +2,21 @@ import React from 'react'
 import { Shelf } from '../components/Shelf'
 import PropTypes from 'prop-types'
 
-export const All = ({ notes, archiveChange }) => {
+export const All = ({ notes, onArchive, onDelete }) => {
   const allNote = notes.filter(({ archived }) => archived === false)
 
-  return <Shelf notes={allNote} active='all' archiveChange={archiveChange} />
+  return (
+    <Shelf
+      notes={allNote}
+      active='all'
+      onArchive={onArchive}
+      onDelete={onDelete}
+    />
+  )
 }
 
 All.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object),
-  archiveChange: PropTypes.func
+  onArchive: PropTypes.func,
+  onDelete: PropTypes.func
 }

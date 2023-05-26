@@ -6,13 +6,29 @@ import {
   MenuItem,
   MenuList
 } from '@chakra-ui/react'
-import { Archive, MoreHorizontal } from '@emotion-icons/fluentui-system-regular'
+import {
+  Archive,
+  Delete,
+  MoreHorizontal
+} from '@emotion-icons/fluentui-system-regular'
 // import { menuList } from '../utils/menuList'
 import PropTypes from 'prop-types'
 
-export const Menu = ({ data, archiveChange }) => {
+export const Menu = ({ data, onArchive, onDelete }) => {
   // const menus = menuList()
   // const { archiveChange } = Note()
+  const menus = [
+    {
+      text: data.archived ? 'Unarchived' : 'Archived',
+      icon: <Archive width={24} height={24} />,
+      action: onArchive
+    },
+    {
+      text: 'Delete',
+      icon: <Delete width={24} height={24} />,
+      action: onDelete
+    }
+  ]
 
   return (
     <MenuChakra>
@@ -22,28 +38,18 @@ export const Menu = ({ data, archiveChange }) => {
         _hover={{
           bgColor: 'yellow.200'
         }}
+        _active={{
+          bgColor: 'yellow.200'
+        }}
         icon={<MoreHorizontal width={16} height={16} />}
       />
-      {/* <Nav */}
-      {/*  initIcon={MoreHorizontalRegular} */}
-      {/*  finalIcon={MoreHorizontalFilled} */}
-      {/*  buttonProps={{ */}
-      {/*    variant: 'ghost', */}
-      {/*    bgColor: 'yellow.100', */}
-      {/*    _hover: { */}
-      {/*      bgColor: 'yellow.200' */}
-      {/*    } */}
-      {/*  }} */}
-      {/* /> */}
-      {/* </MenuButton> */}
 
       <MenuList>
-        <MenuItem
-          icon={<Archive width={24} height={24} />}
-          onClick={() => archiveChange(data.id)}
-        >
-          {data.archived ? 'Unarchived' : 'Archived'}
-        </MenuItem>
+        {menus.map(({ text, icon, action }, id) => (
+          <MenuItem key={id} icon={icon} onClick={() => action(data.id)}>
+            {text}
+          </MenuItem>
+        ))}
       </MenuList>
     </MenuChakra>
   )
@@ -51,5 +57,6 @@ export const Menu = ({ data, archiveChange }) => {
 
 Menu.propTypes = {
   data: PropTypes.object,
-  archiveChange: PropTypes.func
+  onArchive: PropTypes.func,
+  onDelete: PropTypes.func
 }

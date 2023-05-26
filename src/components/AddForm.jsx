@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 
-export const AddForm = ({ note, setNote, titleChange, bodyChange }) => {
+export const AddForm = ({ note, onTitleChange, onBodyChange }) => {
   return (
     <Grid h='full' templateColumns={['repeat(1, 1fr)', 'repeat(4, 1fr)']}>
       <GridItem colSpan={[0, 2]} colStart={[0, 2]}>
@@ -18,7 +18,7 @@ export const AddForm = ({ note, setNote, titleChange, bodyChange }) => {
           <FormLabel>Title</FormLabel>
           <Input
             value={note.title.content}
-            onChange={titleChange}
+            onChange={onTitleChange}
             placeholder='Enter a title'
             _focus={{ boxShadow: 'none', borderColor: 'yellow.300' }}
           />
@@ -30,7 +30,7 @@ export const AddForm = ({ note, setNote, titleChange, bodyChange }) => {
           <Textarea
             value={note.body.content}
             placeholder='Type anything'
-            onChange={bodyChange}
+            onChange={onBodyChange}
             _focus={{ boxShadow: 'none', borderColor: 'yellow.300' }}
             resize='none'
           />
@@ -43,7 +43,6 @@ export const AddForm = ({ note, setNote, titleChange, bodyChange }) => {
 
 AddForm.propTypes = {
   note: PropTypes.object,
-  setNote: PropTypes.func,
-  titleChange: PropTypes.func,
-  bodyChange: PropTypes.func
+  onTitleChange: PropTypes.func,
+  onBodyChange: PropTypes.func
 }

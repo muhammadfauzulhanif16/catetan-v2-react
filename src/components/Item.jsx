@@ -3,9 +3,9 @@ import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 import { Menu } from './Menu'
 
-export const Item = ({ data, archiveChange }) => {
+export const Item = ({ data, onArchive, onDelete }) => {
   return (
-    <Box p={[4, 8, 12]} bgColor='yellow.50' borderRadius={8}>
+    <Box p={[4, 8, 12]} bgColor='yellow.50' rounded={8} boxShadow='sm'>
       <Heading noOfLines={1} size='lg'>
         {data.title}
       </Heading>
@@ -17,7 +17,7 @@ export const Item = ({ data, archiveChange }) => {
         alignItems='center'
         gap={4}
       >
-        <Menu data={data} archiveChange={archiveChange} />
+        <Menu data={data} onArchive={onArchive} onDelete={onDelete} />
 
         <Text color='gray.400'>{data.createdAt}</Text>
       </Flex>
@@ -27,5 +27,6 @@ export const Item = ({ data, archiveChange }) => {
 
 Item.propTypes = {
   data: PropTypes.object,
-  archiveChange: PropTypes.func
+  onArchive: PropTypes.func,
+  onDelete: PropTypes.func
 }

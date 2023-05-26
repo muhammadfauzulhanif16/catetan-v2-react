@@ -27,7 +27,7 @@ export const Header = ({ pathName }) => {
       h={[136, 112, 144]}
       zIndex={2}
     >
-      <Flex gap={4} color='yellow.300' role='group'>
+      <Flex gap={4} color='yellow.200' role='group'>
         <Icon
           initIcon={NoteRegular}
           iconProps={{

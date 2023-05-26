@@ -36,7 +36,7 @@ export const App = () => {
   })
   const [pathName, setPathName] = useState('All')
 
-  const titleChange = (e) => {
+  const onTitleChange = (e) => {
     if (e.target.value.length <= 50) {
       setNote({
         title: {
@@ -50,7 +50,7 @@ export const App = () => {
     }
   }
 
-  const bodyChange = (e) => {
+  const onBodyChange = (e) => {
     setNote({
       title: {
         content: note.title.content,
@@ -62,7 +62,7 @@ export const App = () => {
     })
   }
 
-  const addNote = () => {
+  const onAddNote = () => {
     setNotes([
       ...notes,
       {
@@ -85,7 +85,15 @@ export const App = () => {
     })
   }
 
-  const archiveChange = (id) => {
+  const onArchive = (id) => {
+    setNotes(
+      notes.map((note) =>
+        note.id === id ? { ...note, archived: !note.archived } : note
+      )
+    )
+  }
+
+  const onDelete = (id) => {
     setNotes(
       notes.map((note) =>
         note.id === id ? { ...note, archived: !note.archived } : note
@@ -110,12 +118,14 @@ export const App = () => {
         note={note}
         pathName={pathName}
         setPathName={setPathName}
-        addNote={addNote}
+        addNote={onAddNote}
       >
         <Routes>
           <Route
             path='/'
-            element={<All notes={notes} archiveChange={archiveChange} />}
+            element={
+              <All notes={notes} onArchive={onArchive} onDelete={onDelete} />
+            }
           />
           <Route
             path='/add'
@@ -123,14 +133,20 @@ export const App = () => {
               <Add
                 note={note}
                 setNote={setNote}
-                titleChange={titleChange}
-                bodyChange={bodyChange}
+                onTitleChange={onTitleChange}
+                onBodyChange={onBodyChange}
               />
             }
           />
           <Route
             path='/archive'
-            element={<Archive notes={notes} archiveChange={archiveChange} />}
+            element={
+              <Archive
+                notes={notes}
+                onArchive={onArchive}
+                onDelete={onDelete}
+              />
+            }
           />
         </Routes>
       </Layout>

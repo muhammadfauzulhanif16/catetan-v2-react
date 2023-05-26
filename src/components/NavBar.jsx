@@ -16,11 +16,12 @@ export const NavBar = ({ pathName, setPathName, note, addNote }) => {
       bgColor='gray.100'
       p={2}
       gap={2}
-      borderRadius={8}
+      rounded={8}
       pos='fixed'
       bottom={0}
       right={0}
       left={0}
+      boxShadow='md'
     >
       {navs.map(({ initIcon, finalIcon, text }, id) => (
         <Nav
