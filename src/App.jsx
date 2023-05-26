@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { Layout } from './components/Layout'
-import { Route, Routes, useSearchParams } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { All } from './pages/All'
 import { Add } from './pages/Add'
 import { Archive } from './pages/Archive'
-import { noteList } from './utils/noteList'
+import { Note } from './utils/note'
+import { NotFound } from './pages/NotFound'
 
 export const App = () => {
   const theme = extendTheme({
@@ -24,8 +25,10 @@ export const App = () => {
     }
   })
 
-  const [searchParams, setSearchParams] = useSearchParams()
-  const [notes, setNotes] = useState(noteList())
+  const { searchParams, setSearchParams, notes, setNotes } = Note()
+
+  // const [searchParams, setSearchParams] = useSearchParams()
+  // const [notes, setNotes] = useState(noteList())
   const [note, setNote] = useState({
     title: {
       content: '',
@@ -38,19 +41,19 @@ export const App = () => {
   })
   const [pathName, setPathName] = useState('All')
 
-  const onKeywordChange = ({ target: { value } }) => {
+  const onKeywordChange = ({ target: { value: keyword } }) => {
     setNote({
       title: {
         content: note.title.content,
         max: note.title.max,
-        keyword: value
+        keyword
       },
       body: {
         content: note.body.content
       }
     })
 
-    setSearchParams({ value })
+    setSearchParams({ keyword })
   }
 
   const onTitleChange = (e) => {
@@ -123,17 +126,6 @@ export const App = () => {
       : data.title.toLowerCase().includes(note.title.keyword.toLowerCase())
   )
 
-  // const {
-  //   notes,
-  //   note,
-  //   setNote,
-  //   pathName,
-  //   setPathName,
-  //   titleChange,
-  //   bodyChange,
-  //   addNote
-  // } = Note()
-
   return (
     <ChakraProvider theme={theme}>
       <Layout
@@ -176,6 +168,7 @@ export const App = () => {
               />
             }
           />
+          <Route path='/*' element={<NotFound />} />
         </Routes>
       </Layout>
     </ChakraProvider>
