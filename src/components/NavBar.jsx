@@ -13,7 +13,7 @@ export const NavBar = ({ pathName, setPathName, note, onAddNote }) => {
     <SimpleGrid
       columns={3}
       m={[4, 8, 12]}
-      bgColor='gray.100'
+      bgColor='gray.50'
       p={2}
       gap={2}
       rounded={8}
@@ -21,7 +21,7 @@ export const NavBar = ({ pathName, setPathName, note, onAddNote }) => {
       bottom={0}
       right={0}
       left={0}
-      boxShadow='md'
+      // boxShadow='md'
     >
       {navs.map(({ initIcon, finalIcon, text }, id) => (
         <Nav
@@ -33,10 +33,10 @@ export const NavBar = ({ pathName, setPathName, note, onAddNote }) => {
             color: `${pathName === text ? 'yellow.400' : ''}`,
             w: 'full',
             bgColor:
-              text === 'Add' || text === 'Submit' ? 'yellow.200' : 'gray.100',
+              text === 'Add' || text === 'Submit' ? 'yellow.200' : 'gray.50',
             _hover: {
               bgColor:
-                text === 'Add' || text === 'Submit' ? 'yellow.300' : 'gray.200'
+                text === 'Add' || text === 'Submit' ? 'yellow.300' : 'gray.100'
             },
             isDisabled:
               text === 'Submit' && (!note.title.content || !note.body.content),

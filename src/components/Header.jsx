@@ -21,13 +21,13 @@ export const Header = ({ pathName, keyword, onKeywordChange }) => {
       columns={[1, 2]}
       gap={[4, 0]}
       p={[4, 8, 12]}
-      bgColor='gray.50'
+      bgColor='white'
       pos='sticky'
       top={0}
       h={[136, 112, 144]}
       zIndex={2}
     >
-      <Flex gap={4} color='yellow.200' role='group'>
+      <Flex gap={4} color='yellow.300'>
         <Icon
           initIcon={NoteRegular}
           iconProps={{

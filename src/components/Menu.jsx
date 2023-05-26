@@ -22,7 +22,7 @@ export const Menu = ({ data, onArchive, onDelete }) => {
     {
       text: 'View',
       icon: <ContentView width={24} height={24} />,
-      action: onArchive,
+      action: null,
       color: 'blue'
     },
     {
@@ -43,12 +43,12 @@ export const Menu = ({ data, onArchive, onDelete }) => {
     <MenuChakra>
       <MenuButton
         as={IconButton}
-        bgColor='yellow.100'
+        bgColor='yellow.200'
         _hover={{
-          bgColor: 'yellow.200'
+          bgColor: 'yellow.300'
         }}
         _active={{
-          bgColor: 'yellow.200'
+          bgColor: 'yellow.300'
         }}
         icon={<MoreHorizontal width={16} height={16} />}
       />
@@ -58,7 +58,7 @@ export const Menu = ({ data, onArchive, onDelete }) => {
           <MenuItem
             key={id}
             icon={icon}
-            onClick={() => action(data.id)}
+            onClick={text === 'View' ? null : () => action(data.id)}
             color={`${color}.300`}
           >
             {text}

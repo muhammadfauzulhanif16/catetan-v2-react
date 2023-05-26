@@ -5,9 +5,10 @@ import { Layout } from './components/Layout'
 import { Route, Routes } from 'react-router-dom'
 import { All } from './pages/All'
 import { Add } from './pages/Add'
-import { Archive } from './pages/Archive'
+import { Archived } from './pages/Archived'
 import { Note } from './utils/note'
 import { NotFound } from './pages/NotFound'
+import { Detail } from './pages/Detail'
 
 export const App = () => {
   const theme = extendTheme({
@@ -19,7 +20,7 @@ export const App = () => {
       global: (props) => ({
         body: {
           color: mode('gray.600', 'gray.300')(props),
-          bg: mode('gray.50', 'gray.900')(props)
+          bg: mode('white', 'gray.900')(props)
         }
       })
     }
@@ -137,6 +138,7 @@ export const App = () => {
         onKeywordChange={onKeywordChange}
       >
         <Routes>
+          <Route path='/:id' element={<Detail />} />
           <Route
             path='/'
             element={
@@ -161,13 +163,14 @@ export const App = () => {
           <Route
             path='/archived'
             element={
-              <Archive
+              <Archived
                 notes={searchNotes}
                 onArchive={onArchive}
                 onDelete={onDelete}
               />
             }
           />
+
           <Route path='/*' element={<NotFound />} />
         </Routes>
       </Layout>

@@ -12,7 +12,6 @@ export const EmptyState = ({ active }) => {
       gap={4}
       color='gray.300'
       py={[32, 32, 24]}
-      role='group'
     >
       <Icon
         initIcon={NoteFilled}
