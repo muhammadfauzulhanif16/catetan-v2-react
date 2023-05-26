@@ -15,7 +15,7 @@ import {
 } from '@emotion-icons/fluentui-system-regular'
 import PropTypes from 'prop-types'
 
-export const Header = ({ pathName }) => {
+export const Header = ({ pathName, keyword, onSearch }) => {
   return (
     <SimpleGrid
       columns={[1, 2]}
@@ -57,7 +57,10 @@ export const Header = ({ pathName }) => {
           </InputLeftElement>
 
           <Input
+            type='search'
             placeholder='Search note by title...'
+            value={keyword}
+            onChange={onSearch}
             _focus={{ boxShadow: 'none', borderColor: 'yellow.300' }}
           />
         </InputGroup>
@@ -67,5 +70,7 @@ export const Header = ({ pathName }) => {
 }
 
 Header.propTypes = {
-  pathName: PropTypes.string
+  pathName: PropTypes.string,
+  keyword: PropTypes.string,
+  onSearch: PropTypes.func
 }

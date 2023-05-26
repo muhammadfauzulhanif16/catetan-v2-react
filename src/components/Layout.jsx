@@ -4,10 +4,18 @@ import { Box } from '@chakra-ui/react'
 import { Header } from './Header'
 import { NavBar } from './NavBar'
 
-export const Layout = ({ note, pathName, setPathName, children, addNote }) => {
+export const Layout = ({
+  note,
+  keyword,
+  pathName,
+  setPathName,
+  children,
+  onAddNote,
+  onSearch
+}) => {
   return (
     <Box w='full'>
-      <Header pathName={pathName} />
+      <Header pathName={pathName} keyword={keyword} onSearch={onSearch} />
 
       <Box px={[4, 8, 12]} h='full'>
         {children}
@@ -17,7 +25,7 @@ export const Layout = ({ note, pathName, setPathName, children, addNote }) => {
         pathName={pathName}
         setPathName={setPathName}
         note={note}
-        addNote={addNote}
+        onAddNote={onAddNote}
       />
     </Box>
   )
@@ -26,7 +34,9 @@ export const Layout = ({ note, pathName, setPathName, children, addNote }) => {
 Layout.propTypes = {
   children: PropTypes.element,
   note: PropTypes.object,
+  keyword: PropTypes.string,
   pathName: PropTypes.string,
   setPathName: PropTypes.func,
-  addNote: PropTypes.func
+  onAddNote: PropTypes.func,
+  onSearch: PropTypes.func
 }

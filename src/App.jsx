@@ -35,6 +35,7 @@ export const App = () => {
     }
   })
   const [pathName, setPathName] = useState('All')
+  const [keyword, setKeyword] = useState('')
 
   const onTitleChange = (e) => {
     if (e.target.value.length <= 50) {
@@ -94,12 +95,18 @@ export const App = () => {
   }
 
   const onDelete = (id) => {
-    setNotes(
-      notes.map((note) =>
-        note.id === id ? { ...note, archived: !note.archived } : note
-      )
-    )
+    setNotes(notes.filter((note) => note.id !== id))
   }
+
+  const onSearch = (e) => {
+    setKeyword(e.target.value)
+  }
+
+  const searchNotes = notes.filter((note) =>
+    keyword === ''
+      ? note
+      : note.title.toLowerCase().includes(keyword.toLowerCase())
+  )
 
   // const {
   //   notes,
@@ -116,15 +123,21 @@ export const App = () => {
     <ChakraProvider theme={theme}>
       <Layout
         note={note}
+        keyword={keyword}
         pathName={pathName}
         setPathName={setPathName}
-        addNote={onAddNote}
+        onAddNote={onAddNote}
+        onSearch={onSearch}
       >
         <Routes>
           <Route
             path='/'
             element={
-              <All notes={notes} onArchive={onArchive} onDelete={onDelete} />
+              <All
+                notes={keyword === '' ? notes : searchNotes}
+                onArchive={onArchive}
+                onDelete={onDelete}
+              />
             }
           />
           <Route
@@ -142,7 +155,7 @@ export const App = () => {
             path='/archive'
             element={
               <Archive
-                notes={notes}
+                notes={keyword === '' ? notes : searchNotes}
                 onArchive={onArchive}
                 onDelete={onDelete}
               />
