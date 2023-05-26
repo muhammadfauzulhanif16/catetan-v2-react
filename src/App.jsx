@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { Layout } from './components/Layout'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useSearchParams } from 'react-router-dom'
 import { All } from './pages/All'
 import { Add } from './pages/Add'
 import { Archive } from './pages/Archive'
@@ -24,25 +24,42 @@ export const App = () => {
     }
   })
 
+  const [searchParams, setSearchParams] = useSearchParams()
   const [notes, setNotes] = useState(noteList())
   const [note, setNote] = useState({
     title: {
       content: '',
-      max: 50
+      max: 50,
+      keyword: searchParams.get('keyword') || ''
     },
     body: {
       content: ''
     }
   })
   const [pathName, setPathName] = useState('All')
-  const [keyword, setKeyword] = useState('')
+
+  const onKeywordChange = ({ target: { value } }) => {
+    setNote({
+      title: {
+        content: note.title.content,
+        max: note.title.max,
+        keyword: value
+      },
+      body: {
+        content: note.body.content
+      }
+    })
+
+    setSearchParams({ value })
+  }
 
   const onTitleChange = (e) => {
     if (e.target.value.length <= 50) {
       setNote({
         title: {
           content: e.target.value,
-          max: 50 - e.target.value.length
+          max: 50 - e.target.value.length,
+          keyword: note.title.keyword
         },
         body: {
           content: note.body.content
@@ -55,7 +72,8 @@ export const App = () => {
     setNote({
       title: {
         content: note.title.content,
-        max: note.title.max
+        max: note.title.max,
+        keyword: note.title.keyword
       },
       body: {
         content: e.target.value
@@ -78,7 +96,8 @@ export const App = () => {
     setNote({
       title: {
         content: '',
-        max: 50
+        max: 50,
+        keyword: note.title.keyword
       },
       body: {
         content: ''
@@ -98,14 +117,10 @@ export const App = () => {
     setNotes(notes.filter((note) => note.id !== id))
   }
 
-  const onSearch = (e) => {
-    setKeyword(e.target.value)
-  }
-
-  const searchNotes = notes.filter((note) =>
-    keyword === ''
-      ? note
-      : note.title.toLowerCase().includes(keyword.toLowerCase())
+  const searchNotes = notes.filter((data) =>
+    note.title.keyword === ''
+      ? data
+      : data.title.toLowerCase().includes(note.title.keyword.toLowerCase())
   )
 
   // const {
@@ -123,18 +138,18 @@ export const App = () => {
     <ChakraProvider theme={theme}>
       <Layout
         note={note}
-        keyword={keyword}
+        keyword={note.title.keyword}
         pathName={pathName}
         setPathName={setPathName}
         onAddNote={onAddNote}
-        onSearch={onSearch}
+        onKeywordChange={onKeywordChange}
       >
         <Routes>
           <Route
             path='/'
             element={
               <All
-                notes={keyword === '' ? notes : searchNotes}
+                notes={searchNotes}
                 onArchive={onArchive}
                 onDelete={onDelete}
               />
@@ -155,7 +170,7 @@ export const App = () => {
             path='/archive'
             element={
               <Archive
-                notes={keyword === '' ? notes : searchNotes}
+                notes={searchNotes}
                 onArchive={onArchive}
                 onDelete={onDelete}
               />

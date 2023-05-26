@@ -11,11 +11,15 @@ export const Layout = ({
   setPathName,
   children,
   onAddNote,
-  onSearch
+  onKeywordChange
 }) => {
   return (
     <Box w='full'>
-      <Header pathName={pathName} keyword={keyword} onSearch={onSearch} />
+      <Header
+        pathName={pathName}
+        keyword={keyword}
+        onKeywordChange={onKeywordChange}
+      />
 
       <Box px={[4, 8, 12]} h='full'>
         {children}
@@ -38,5 +42,5 @@ Layout.propTypes = {
   pathName: PropTypes.string,
   setPathName: PropTypes.func,
   onAddNote: PropTypes.func,
-  onSearch: PropTypes.func
+  onKeywordChange: PropTypes.func
 }
