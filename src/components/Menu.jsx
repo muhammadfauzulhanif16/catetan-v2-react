@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react'
 import {
   Archive,
+  ContentView,
   Delete,
   MoreHorizontal
 } from '@emotion-icons/fluentui-system-regular'
@@ -19,14 +20,22 @@ export const Menu = ({ data, onArchive, onDelete }) => {
   // const { archiveChange } = Note()
   const menus = [
     {
+      text: 'View',
+      icon: <ContentView width={24} height={24} />,
+      action: onArchive,
+      color: 'blue'
+    },
+    {
       text: data.archived ? 'Unarchived' : 'Archived',
       icon: <Archive width={24} height={24} />,
-      action: onArchive
+      action: onArchive,
+      color: 'purple'
     },
     {
       text: 'Delete',
       icon: <Delete width={24} height={24} />,
-      action: onDelete
+      action: onDelete,
+      color: 'red'
     }
   ]
 
@@ -45,8 +54,13 @@ export const Menu = ({ data, onArchive, onDelete }) => {
       />
 
       <MenuList>
-        {menus.map(({ text, icon, action }, id) => (
-          <MenuItem key={id} icon={icon} onClick={() => action(data.id)}>
+        {menus.map(({ text, icon, action, color }, id) => (
+          <MenuItem
+            key={id}
+            icon={icon}
+            onClick={() => action(data.id)}
+            color={`${color}.300`}
+          >
             {text}
           </MenuItem>
         ))}
