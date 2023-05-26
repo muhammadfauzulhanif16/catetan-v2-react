@@ -159,7 +159,7 @@ export const App = () => {
             }
           />
           <Route
-            path='/archive'
+            path='/archived'
             element={
               <Archive
                 notes={searchNotes}
