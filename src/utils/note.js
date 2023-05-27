@@ -69,8 +69,8 @@ export const Note = () => {
         id: uuidV4(),
         title: note.title.content,
         body: note.body.content,
-        createdAt: new Date().toLocaleString(),
-        archived: false
+        archived: false,
+        createdAt: new Date().toLocaleString()
       }
     ])
 

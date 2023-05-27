@@ -4,7 +4,7 @@ import { SimpleGrid } from '@chakra-ui/react'
 import { Item } from './Item'
 import { EmptyState } from './EmptyState'
 
-export const Shelf = ({ notes, active, onArchive, onDelete }) => {
+export const Shelf = ({ notes, onArchive, onDelete }) => {
   return (
     <>
       {notes.length > 0
@@ -21,7 +21,7 @@ export const Shelf = ({ notes, active, onArchive, onDelete }) => {
         </SimpleGrid>
           )
         : (
-        <EmptyState active={active} />
+        <EmptyState />
           )}
     </>
   )
@@ -29,7 +29,6 @@ export const Shelf = ({ notes, active, onArchive, onDelete }) => {
 
 Shelf.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object),
-  active: PropTypes.string,
   onArchive: PropTypes.func,
   onDelete: PropTypes.func
 }

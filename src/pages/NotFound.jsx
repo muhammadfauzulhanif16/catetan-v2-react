@@ -58,7 +58,6 @@ export const NotFound = () => {
           h: 6
         }}
       />
-      {/* <Button onClick={() => navigate('/')}>Back to Home</Button> */}
     </Flex>
   )
 }
