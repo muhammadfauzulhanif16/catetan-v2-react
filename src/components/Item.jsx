@@ -5,7 +5,7 @@ import { Menu } from './Menu'
 
 export const Item = ({ data, onArchive, onDelete }) => {
   return (
-    <Box p={[4, 8, 12]} bgColor='yellow.50' rounded={8}>
+    <Box p={[4, 8, 12]} bgColor='yellow.50' rounded={8} color='gray.600'>
       <Heading noOfLines={1} size='lg'>
         {data.title}
       </Heading>

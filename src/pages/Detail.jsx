@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom'
 
 export const Detail = () => {
   const note = getNote(useParams().id)
-  console.log(note, 'detail')
+
   return (
-    <Flex direction='column' gap={4} pb={[32, 32, 24]}>
+    <Flex direction='column' gap={4} pb={[32, 32, 24]} color='gray.600'>
       <Heading noOfLines={1} size='lg'>
         {note.title}
       </Heading>
