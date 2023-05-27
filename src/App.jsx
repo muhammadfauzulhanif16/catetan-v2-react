@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { Layout } from './components/Layout'
@@ -6,10 +6,9 @@ import { Route, Routes } from 'react-router-dom'
 import { All } from './pages/All'
 import { Add } from './pages/Add'
 import { Archived } from './pages/Archived'
-import { Note } from './utils/note'
 import { NotFound } from './pages/NotFound'
 import { Detail } from './pages/Detail'
-import { v4 as uuidV4 } from 'uuid'
+import { Note } from './utils/note'
 
 export const App = () => {
   const theme = extendTheme({
@@ -27,106 +26,20 @@ export const App = () => {
     }
   })
 
-  const { searchParams, setSearchParams, notes, setNotes } = Note()
-  console.log(notes)
-  // const [searchParams, setSearchParams] = useSearchParams()
-  // const [notes, setNotes] = useState(noteList())
-  const [note, setNote] = useState({
-    title: {
-      content: '',
-      max: 50,
-      keyword: searchParams.get('keyword') || ''
-    },
-    body: {
-      content: ''
-    }
-  })
-  const [pathName, setPathName] = useState('All')
-
-  const onKeywordChange = ({ target: { value: keyword } }) => {
-    setNote({
-      title: {
-        content: note.title.content,
-        max: note.title.max,
-        keyword
-      },
-      body: {
-        content: note.body.content
-      }
-    })
-
-    setSearchParams({ keyword })
-  }
-
-  const onTitleChange = (e) => {
-    if (e.target.value.length <= 50) {
-      setNote({
-        title: {
-          content: e.target.value,
-          max: 50 - e.target.value.length,
-          keyword: note.title.keyword
-        },
-        body: {
-          content: note.body.content
-        }
-      })
-    }
-  }
-
-  const onBodyChange = (e) => {
-    setNote({
-      title: {
-        content: note.title.content,
-        max: note.title.max,
-        keyword: note.title.keyword
-      },
-      body: {
-        content: e.target.value
-      }
-    })
-  }
-
-  const onAddNote = () => {
-    setNotes([
-      ...notes,
-      {
-        id: uuidV4(),
-        title: note.title.content,
-        body: note.body.content,
-        createdAt: new Date().toLocaleString(),
-        archived: false
-      }
-    ])
-
-    setNote({
-      title: {
-        content: '',
-        max: 50,
-        keyword: note.title.keyword
-      },
-      body: {
-        content: ''
-      }
-    })
-  }
-
-  const onArchive = (id) => {
-    setNotes(
-      notes.map((note) =>
-        note.id === id ? { ...note, archived: !note.archived } : note
-      )
-    )
-  }
-
-  const onDelete = (id) => {
-    setNotes(notes.filter((note) => note.id !== id))
-  }
-
-  const searchNotes = notes.filter((data) =>
-    note.title.keyword === ''
-      ? data
-      : data.title.toLowerCase().includes(note.title.keyword.toLowerCase())
-  )
+  const {
+    pathName,
+    setPathName,
+    note,
+    setNote,
+    onKeywordChange,
+    onTitleChange,
+    onBodyChange,
+    onAdd,
+    onArchive,
+    onDelete,
+    searchNotes,
+    getNote
+  } = Note()
 
   return (
     <ChakraProvider theme={theme}>
@@ -135,7 +48,7 @@ export const App = () => {
         keyword={note.title.keyword}
         pathName={pathName}
         setPathName={setPathName}
-        onAddNote={onAddNote}
+        onAdd={onAdd}
         onKeywordChange={onKeywordChange}
       >
         <Routes>
@@ -149,8 +62,7 @@ export const App = () => {
               />
             }
           />
-          <Route path='/notes/:id' element={<Detail />} />
-
+          <Route path='/notes/:id' element={<Detail getNote={getNote} />} />
           <Route
             path='/add'
             element={

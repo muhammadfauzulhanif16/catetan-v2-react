@@ -10,7 +10,7 @@ export const Layout = ({
   pathName,
   setPathName,
   children,
-  onAddNote,
+  onAdd,
   onKeywordChange
 }) => {
   return (
@@ -29,7 +29,7 @@ export const Layout = ({
         pathName={pathName}
         setPathName={setPathName}
         note={note}
-        onAddNote={onAddNote}
+        onAdd={onAdd}
       />
     </Box>
   )
@@ -41,6 +41,6 @@ Layout.propTypes = {
   keyword: PropTypes.string,
   pathName: PropTypes.string,
   setPathName: PropTypes.func,
-  onAddNote: PropTypes.func,
+  onAdd: PropTypes.func,
   onKeywordChange: PropTypes.func
 }

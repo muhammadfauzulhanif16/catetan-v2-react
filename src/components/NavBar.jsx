@@ -5,7 +5,7 @@ import { navList } from '../utils/navList'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-export const NavBar = ({ pathName, setPathName, note, onAddNote }) => {
+export const NavBar = ({ pathName, setPathName, note, onAdd }) => {
   const navs = navList(pathName)
   const navigate = useNavigate()
 
@@ -46,7 +46,7 @@ export const NavBar = ({ pathName, setPathName, note, onAddNote }) => {
             onClick:
               text === 'Submit'
                 ? () => {
-                    onAddNote()
+                    onAdd()
                     setPathName('All')
                     navigate('/')
                   }
@@ -72,5 +72,5 @@ NavBar.propTypes = {
   pathName: PropTypes.string,
   setPathName: PropTypes.func,
   note: PropTypes.object,
-  onAddNote: PropTypes.func
+  onAdd: PropTypes.func
 }

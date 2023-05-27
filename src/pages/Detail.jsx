@@ -1,16 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Note } from '../utils/note'
-import { Flex, Heading, Text } from '@chakra-ui/react'
+import { Badge, Flex, Heading, Text } from '@chakra-ui/react'
 import { EmptyState } from '../components/EmptyState'
+import PropTypes from 'prop-types'
 
-export const Detail = () => {
-  const { getNote } = Note()
-  const { id } = useParams()
-  console.log(id, 'detail')
+export const Detail = ({ getNote }) => {
+  const note = getNote(useParams().id)
 
-  const note = getNote(id)
-
+  console.log(useParams().id, 'detail')
   console.log(note)
 
   return (
@@ -24,9 +21,20 @@ export const Detail = () => {
           <Heading noOfLines={1} size='lg'>
             {note?.title}
           </Heading>
+
+          <Flex gap={4} alignItems='center'>
+            <Text color='gray.400'>{note?.createdAt}</Text>
+
+            {note?.archived ? <Badge colorScheme='purple'>Archived</Badge> : ''}
+          </Flex>
+
           <Text noOfLines={2}>{note?.body}</Text>
         </Flex>
           )}
     </>
   )
+}
+
+Detail.propTypes = {
+  getNote: PropTypes.func
 }
