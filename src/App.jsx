@@ -53,7 +53,7 @@ export const App = () => {
       >
         <Routes>
           <Route
-            path=''
+            path='/'
             element={
               <All
                 notes={searchNotes}

@@ -17,7 +17,6 @@ export const Note = () => {
       content: ''
     }
   })
-  console.log(notes)
 
   const onKeywordChange = ({ target: { value: keyword } }) => {
     setNote({
@@ -57,7 +56,7 @@ export const Note = () => {
         keyword: note.title.keyword
       },
       body: {
-        content: e.target.innerHTML
+        content: e.target.value
       }
     })
   }

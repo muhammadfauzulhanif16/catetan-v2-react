@@ -10,6 +10,7 @@ import {
   Archive as ArchiveFilled,
   Send as SendFilled
 } from '@emotion-icons/fluentui-system-filled'
+import PropTypes from 'prop-types'
 
 export const navList = (pathName) => [
   {
@@ -28,3 +29,7 @@ export const navList = (pathName) => [
     text: 'Archived'
   }
 ]
+
+navList.propTypes = {
+  pathName: PropTypes.string
+}
