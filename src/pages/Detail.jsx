@@ -3,29 +3,38 @@ import { useParams } from 'react-router-dom'
 import { Badge, Flex, Heading, Text } from '@chakra-ui/react'
 import { EmptyState } from '../components/EmptyState'
 import PropTypes from 'prop-types'
+import { Menu } from '../components/Menu'
 
-export const Detail = ({ getNote }) => {
-  const note = getNote(useParams().id)
+export const Detail = ({ getNote, onArchive, onDelete, setPathName }) => {
+  const data = getNote(useParams().id)
 
   return (
     <>
-      {typeof note === 'undefined'
+      {typeof data === 'undefined'
         ? (
         <EmptyState />
           )
         : (
         <Flex direction='column' gap={4} pb={[32, 32, 24]} color='gray.600'>
           <Heading noOfLines={1} size='lg'>
-            {note.title}
+            {data.title}
           </Heading>
 
           <Flex gap={4} alignItems='center'>
-            <Text color='gray.400'>{note.createdAt}</Text>
+            <Text color='gray.400'>{data.createdAt}</Text>
 
-            {note.archived ? <Badge colorScheme='purple'>Archived</Badge> : ''}
+            {data.archived ? <Badge colorScheme='purple'>Archived</Badge> : ''}
+
+            <Menu
+              data={data}
+              onArchive={onArchive}
+              onDelete={onDelete}
+              setPathName={setPathName}
+              active='Detail'
+            />
           </Flex>
 
-          <Text>{note.body}</Text>
+          <Text>{data.body}</Text>
         </Flex>
           )}
     </>
@@ -33,5 +42,8 @@ export const Detail = ({ getNote }) => {
 }
 
 Detail.propTypes = {
-  getNote: PropTypes.func
+  getNote: PropTypes.func,
+  onArchive: PropTypes.func,
+  onDelete: PropTypes.func,
+  setPathName: PropTypes.func
 }

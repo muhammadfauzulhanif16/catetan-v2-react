@@ -59,10 +59,21 @@ export const App = () => {
                 notes={searchNotes}
                 onArchive={onArchive}
                 onDelete={onDelete}
+                setPathName={setPathName}
               />
             }
           />
-          <Route path='/notes/:id' element={<Detail getNote={getNote} />} />
+          <Route
+            path='/notes/:id'
+            element={
+              <Detail
+                getNote={getNote}
+                onArchive={onArchive}
+                onDelete={onDelete}
+                setPathName={setPathName}
+              />
+            }
+          />
           <Route
             path='/add'
             element={
@@ -81,6 +92,7 @@ export const App = () => {
                 notes={searchNotes}
                 onArchive={onArchive}
                 onDelete={onDelete}
+                setPathName={setPathName}
               />
             }
           />
