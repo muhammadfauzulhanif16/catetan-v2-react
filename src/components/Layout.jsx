@@ -14,7 +14,7 @@ export const Layout = ({
   onKeywordChange
 }) => {
   return (
-    <Box w='full'>
+    <Box w='full' userSelect='none'>
       <Header
         pathName={pathName}
         keyword={keyword}

@@ -9,7 +9,7 @@ export const Shelf = ({ notes, active, onArchive, onDelete }) => {
     <>
       {notes.length > 0
         ? (
-        <SimpleGrid columns={[1, 2, 2, 3]} gap={4} w='full' pb={[24, 32, 40]}>
+        <SimpleGrid columns={[1, 1, 2, 3]} gap={4} w='full' pb={[24, 32, 40]}>
           {notes.map((note) => (
             <Item
               key={note.id}

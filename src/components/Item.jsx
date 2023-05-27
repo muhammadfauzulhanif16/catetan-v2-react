@@ -19,7 +19,9 @@ export const Item = ({ data, onArchive, onDelete }) => {
       >
         <Menu data={data} onArchive={onArchive} onDelete={onDelete} />
 
-        <Text color='gray.400'>{data.createdAt}</Text>
+        <Text color='gray.400' noOfLines={1}>
+          {data.createdAt}
+        </Text>
       </Flex>
     </Box>
   )

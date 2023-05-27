@@ -58,7 +58,9 @@ export const Menu = ({ data, onArchive, onDelete }) => {
           <MenuItem
             key={id}
             icon={icon}
-            onClick={() => action(`${text === 'View' ? '/' : ''}${data.id}`)}
+            onClick={() =>
+              action(`${text === 'View' ? '/notes/' : ''}${data.id}`)
+            }
             color={`${color}.300`}
           >
             {`${text} note`}

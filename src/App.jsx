@@ -9,6 +9,7 @@ import { Archived } from './pages/Archived'
 import { Note } from './utils/note'
 import { NotFound } from './pages/NotFound'
 import { Detail } from './pages/Detail'
+import { v4 as uuidV4 } from 'uuid'
 
 export const App = () => {
   const theme = extendTheme({
@@ -27,7 +28,7 @@ export const App = () => {
   })
 
   const { searchParams, setSearchParams, notes, setNotes } = Note()
-
+  console.log(notes)
   // const [searchParams, setSearchParams] = useSearchParams()
   // const [notes, setNotes] = useState(noteList())
   const [note, setNote] = useState({
@@ -89,11 +90,11 @@ export const App = () => {
     setNotes([
       ...notes,
       {
-        id: +new Date(),
+        id: uuidV4(),
         title: note.title.content,
         body: note.body.content,
-        archived: false,
-        createdAt: new Date().toLocaleString()
+        createdAt: new Date().toLocaleString(),
+        archived: false
       }
     ])
 
@@ -138,19 +139,18 @@ export const App = () => {
         onKeywordChange={onKeywordChange}
       >
         <Routes>
-          <Route path='/'>
-            <Route
-              path=''
-              element={
-                <All
-                  notes={searchNotes}
-                  onArchive={onArchive}
-                  onDelete={onDelete}
-                />
-              }
-            />
-            <Route path=':id' element={<Detail />} />
-          </Route>
+          <Route
+            path=''
+            element={
+              <All
+                notes={searchNotes}
+                onArchive={onArchive}
+                onDelete={onDelete}
+              />
+            }
+          />
+          <Route path='/notes/:id' element={<Detail />} />
+
           <Route
             path='/add'
             element={
