@@ -1,4 +1,4 @@
-export const noteList = () => [
+export const noteList = [
   {
     id: 'notes-1',
     title: 'Babel',
@@ -42,3 +42,7 @@ export const noteList = () => [
     archived: false
   }
 ]
+
+export const getNotes = () => noteList
+
+export const getNote = (id) => noteList.filter((note) => note.id === id)[0]

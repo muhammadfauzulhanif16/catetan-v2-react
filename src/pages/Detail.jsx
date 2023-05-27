@@ -1,31 +1,17 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
+import { getNote } from '../utils/noteList'
 import { useParams } from 'react-router-dom'
 
 export const Detail = () => {
-  const { id } = useParams()
-
+  const note = getNote(useParams().id)
+  console.log(note, 'detail')
   return (
-    <Flex
-      direction='column'
-      alignItems='center'
-      gap={4}
-      color='gray.300'
-      py={[32, 32, 24]}
-    >
-      {id}
-      {/* <Icon */}
-      {/*  initIcon={NoteFilled} */}
-      {/*  iconProps={{ */}
-      {/*    w: 16, */}
-      {/*    h: 16 */}
-      {/*  }} */}
-      {/* /> */}
-
-      {/* <Box> */}
-      {/*  <Text textAlign='center'>{`No ${active} notes yet.`}</Text> */}
-      {/*  <Text textAlign='center'>Add one or more notes.</Text> */}
-      {/* </Box> */}
+    <Flex direction='column' gap={4} pb={[32, 32, 24]}>
+      <Heading noOfLines={1} size='lg'>
+        {note.title}
+      </Heading>
+      <Text noOfLines={2}>{note.body}</Text>
     </Flex>
   )
 }

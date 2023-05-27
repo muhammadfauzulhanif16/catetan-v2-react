@@ -138,17 +138,19 @@ export const App = () => {
         onKeywordChange={onKeywordChange}
       >
         <Routes>
-          <Route path='/:id' element={<Detail />} />
-          <Route
-            path='/'
-            element={
-              <All
-                notes={searchNotes}
-                onArchive={onArchive}
-                onDelete={onDelete}
-              />
-            }
-          />
+          <Route path='/'>
+            <Route
+              path=''
+              element={
+                <All
+                  notes={searchNotes}
+                  onArchive={onArchive}
+                  onDelete={onDelete}
+                />
+              }
+            />
+            <Route path=':id' element={<Detail />} />
+          </Route>
           <Route
             path='/add'
             element={
