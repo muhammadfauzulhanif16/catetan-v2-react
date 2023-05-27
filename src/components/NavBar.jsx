@@ -21,7 +21,6 @@ export const NavBar = ({ pathName, setPathName, note, onAdd }) => {
       bottom={0}
       right={0}
       left={0}
-      // boxShadow='md'
     >
       {navs.map(({ initIcon, finalIcon, text }, id) => (
         <Nav

@@ -31,23 +31,17 @@ export const Menu = ({ data, onArchive, onDelete, setPathName, active }) => {
 
       <MenuList>
         {menus.map(({ text, icon, action, color }, id) => (
-          <>
-            {active === 'Detail' && text === 'View'
-              ? null
-              : (
-              <MenuItem
-                key={id}
-                icon={icon}
-                onClick={() => {
-                  setPathName(`${text === 'View' ? '' : active}`)
-                  action(`${text === 'View' ? '/notes/' : ''}${data.id}`)
-                }}
-                color={`${color}.300`}
-              >
-                {`${text} note`}
-              </MenuItem>
-                )}
-          </>
+          <MenuItem
+            key={id}
+            icon={icon}
+            onClick={() => {
+              setPathName(text === 'View' ? '' : active)
+              action(`${text === 'View' ? '/notes/' : ''}${data.id}`)
+            }}
+            color={`${color}.300`}
+          >
+            {`${text} note`}
+          </MenuItem>
         ))}
       </MenuList>
     </MenuChakra>

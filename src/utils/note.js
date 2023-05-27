@@ -57,7 +57,7 @@ export const Note = () => {
         keyword: note.title.keyword
       },
       body: {
-        content: e.target.value
+        content: e.target.innerHTML
       }
     })
   }

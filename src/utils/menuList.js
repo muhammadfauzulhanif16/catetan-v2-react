@@ -4,6 +4,7 @@ import {
   Delete
 } from '@emotion-icons/fluentui-system-regular'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export const menuList = (data, navigate, onArchive, onDelete) => [
   {
@@ -25,3 +26,10 @@ export const menuList = (data, navigate, onArchive, onDelete) => [
     color: 'red'
   }
 ]
+
+menuList.propTypes = {
+  data: PropTypes.object,
+  navigate: PropTypes.func,
+  onArchive: PropTypes.func,
+  onDelete: PropTypes.func
+}

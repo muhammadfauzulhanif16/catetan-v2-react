@@ -1,12 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import { Badge, Flex, Heading, Text } from '@chakra-ui/react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Badge, Button, Flex, Heading, Text } from '@chakra-ui/react'
 import { EmptyState } from '../components/EmptyState'
 import PropTypes from 'prop-types'
-import { Menu } from '../components/Menu'
 
 export const Detail = ({ getNote, onArchive, onDelete, setPathName }) => {
   const data = getNote(useParams().id)
+  const navigate = useNavigate()
 
   return (
     <>
@@ -24,17 +24,35 @@ export const Detail = ({ getNote, onArchive, onDelete, setPathName }) => {
             <Text color='gray.400'>{data.createdAt}</Text>
 
             {data.archived ? <Badge colorScheme='purple'>Archived</Badge> : ''}
-
-            <Menu
-              data={data}
-              onArchive={onArchive}
-              onDelete={onDelete}
-              setPathName={setPathName}
-              active='Detail'
-            />
           </Flex>
 
           <Text>{data.body}</Text>
+
+          <Flex gap={4}>
+            <Button
+              colorScheme='purple'
+              variant='outline'
+              onClick={() => {
+                navigate(data.archived ? '/' : '/archived')
+                setPathName(data.archived ? 'All' : 'Archived')
+                onArchive(data.id)
+              }}
+            >
+              {data.archived ? 'Unarchived' : 'Archived'}
+            </Button>
+
+            <Button
+              colorScheme='red'
+              variant='outline'
+              onClick={() => {
+                navigate(data.archived ? '/archived' : '/')
+                setPathName(data.archived ? 'Archived' : 'All')
+                onDelete(data.id)
+              }}
+            >
+              Delete
+            </Button>
+          </Flex>
         </Flex>
           )}
     </>

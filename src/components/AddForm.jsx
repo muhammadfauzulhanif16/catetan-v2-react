@@ -28,9 +28,9 @@ export const AddForm = ({ note, onTitleChange, onBodyChange }) => {
         <FormControl>
           <FormLabel>Content</FormLabel>
           <Textarea
-            value={note.body.content}
+            contentEditable
             placeholder='Type anything'
-            onChange={onBodyChange}
+            onInput={onBodyChange}
             _focus={{ boxShadow: 'none', borderColor: 'yellow.300' }}
             resize='none'
           />
