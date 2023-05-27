@@ -7,9 +7,6 @@ import PropTypes from 'prop-types'
 export const Detail = ({ getNote }) => {
   const note = getNote(useParams().id)
 
-  console.log(useParams().id, 'detail')
-  console.log(note)
-
   return (
     <>
       {typeof note === 'undefined'
@@ -19,16 +16,16 @@ export const Detail = ({ getNote }) => {
         : (
         <Flex direction='column' gap={4} pb={[32, 32, 24]} color='gray.600'>
           <Heading noOfLines={1} size='lg'>
-            {note?.title}
+            {note.title}
           </Heading>
 
           <Flex gap={4} alignItems='center'>
-            <Text color='gray.400'>{note?.createdAt}</Text>
+            <Text color='gray.400'>{note.createdAt}</Text>
 
-            {note?.archived ? <Badge colorScheme='purple'>Archived</Badge> : ''}
+            {note.archived ? <Badge colorScheme='purple'>Archived</Badge> : ''}
           </Flex>
 
-          <Text>{note?.body}</Text>
+          <Text>{note.body}</Text>
         </Flex>
           )}
     </>
