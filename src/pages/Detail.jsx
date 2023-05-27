@@ -28,7 +28,7 @@ export const Detail = ({ getNote }) => {
             {note?.archived ? <Badge colorScheme='purple'>Archived</Badge> : ''}
           </Flex>
 
-          <Text noOfLines={2}>{note?.body}</Text>
+          <Text>{note?.body}</Text>
         </Flex>
           )}
     </>
